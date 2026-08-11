@@ -12,7 +12,7 @@ ROOT = Path(__file__).resolve().parents[1]
 INBOX = ROOT / 'images' / 'review'
 RESULTS = ROOT / 'data' / 'review-results.json'
 API_KEY = os.environ.get('GEMINI_API_KEY')
-MODEL = 'gemini-2.0-flash'
+MODEL = 'gemini-3.6-flash'
 PROMPT = '''You are a cautious botanical image triage assistant. Analyze ONE image only. Do not infer unseen features. Return valid JSON only with these keys: file, likely_common_name_bg, likely_scientific_name, family, confidence (low|medium|high), visible_features, possible_lookalikes, additional_photos_needed, safety_note, review_status. Use Bulgarian for all descriptive strings. review_status must be needs_human_review. If the organism cannot be determined from the image, state that clearly and keep confidence low. Do not provide medical advice or claim an identification is certain.'''
 
 def load_results():
@@ -43,7 +43,8 @@ def main():
     if not API_KEY:
         raise RuntimeError('Missing GEMINI_API_KEY repository secret.')
     data = load_results()
-    existing = {item.get('file') for item in data.get('items', [])}
+    data['items'] = [item for item in data.get('items', []) if 'HTTP Error 404' not in str(item.get('error', ''))]
+    existing = {item.get('file') for item in data['items']}
     files = [p for p in INBOX.glob('*') if p.suffix.lower() in {'.jpg', '.jpeg', '.png', '.webp'} and p.name not in existing]
     for path in files:
         if path.stat().st_size > 18 * 1024 * 1024:
