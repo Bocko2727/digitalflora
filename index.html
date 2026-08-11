@@ -1,0 +1,2086 @@
+<!DOCTYPE html>
+<html lang="bg" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Дигитален Ботанически Дневник & Хербарий</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Plus+Jakarta+Sans:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        botanical: {
+                            50: '#f4f7f4',
+                            100: '#e3ebe3',
+                            200: '#c8d8c8',
+                            300: '#a1bfa2',
+                            400: '#75a077',
+                            500: '#548356',
+                            600: '#3e6a40',
+                            700: '#335435',
+                            800: '#2b442d',
+                            900: '#243926',
+                            950: '#121f14',
+                        },
+                        paper: {
+                            bg: '#fcfbfa',
+                            card: '#f4efe6',
+                            border: '#e2d7c5',
+                            bgDark: '#0e1310',
+                            cardDark: '#18201a',
+                            borderDark: '#2a3a2e'
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['"Lora"', 'Georgia', 'serif'],
+                        sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: rgba(100, 125, 100, 0.35);
+            border-radius: 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: rgba(100, 125, 100, 0.6);
+        }
+        .book-shadow {
+            box-shadow: 0 12px 36px -6px rgba(20, 35, 22, 0.12), 0 24px 30px -8px rgba(0, 0, 0, 0.06);
+        }
+        .tab-btn {
+            font-size: 0.8125rem; /* 13px */
+            letter-spacing: 0.01em;
+        }
+        .tab-btn.active {
+            background-color: #3e6a40;
+            color: #ffffff;
+            font-weight: 600;
+        }
+        .dark .tab-btn.active {
+            background-color: #548356;
+            color: #ffffff;
+            font-weight: 600;
+        }
+    </style>
+</head>
+
+<body class="bg-paper-bg dark:bg-paper-bgDark text-slate-800 dark:text-slate-200 font-sans h-full min-h-screen flex flex-col transition-colors duration-200 selection:bg-botanical-200 selection:text-botanical-900">
+
+    <header class="bg-paper-card dark:bg-paper-cardDark border-b border-paper-border dark:border-paper-borderDark sticky top-0 z-30 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-xl bg-botanical-600 text-white flex items-center justify-center shadow-md">
+                    <i data-lucide="book-open" class="w-5 h-5"></i>
+                </div>
+                <div>
+                    <h1 class="font-serif font-bold text-lg sm:text-xl text-slate-900 dark:text-slate-100 leading-tight">Дигитален Ботанически Хербарий</h1>
+                    <p class="text-xs text-botanical-700 dark:text-botanical-300 font-medium">Книга за растенията & Полеви дневник</p>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="flex items-center space-x-2">
+                <button onclick="toggleSearchModal()" title="Търсене" class="p-2 rounded-lg bg-botanical-100/60 dark:bg-botanical-900/60 hover:bg-botanical-200 dark:hover:bg-botanical-800 text-botanical-900 dark:text-botanical-100 transition-colors">
+                    <i data-lucide="search" class="w-4 h-4"></i>
+                </button>
+                <button onclick="openAddPlantModal()" title="Добави ново растение" class="p-2 sm:px-3 sm:py-2 rounded-lg bg-botanical-600 hover:bg-botanical-700 text-white text-xs font-semibold flex items-center gap-1.5 shadow-sm transition-all">
+                    <i data-lucide="plus" class="w-4 h-4"></i>
+                    <span class="hidden sm:inline">Ново растение</span>
+                </button>
+                <button onclick="toggleDarkMode()" title="Тъмна/Светла тема" class="p-2 rounded-lg bg-botanical-100/60 dark:bg-botanical-900/60 hover:bg-botanical-200 dark:hover:bg-botanical-800 text-botanical-900 dark:text-botanical-100 transition-colors">
+                    <i data-lucide="moon" class="w-4 h-4 dark:hidden"></i>
+                    <i data-lucide="sun" class="w-4 h-4 hidden dark:block"></i>
+                </button>
+                <button onclick="printPlantPage()" title="Принтирай фиш" class="p-2 rounded-lg bg-botanical-100/60 dark:bg-botanical-900/60 hover:bg-botanical-200 dark:hover:bg-botanical-800 text-botanical-900 dark:text-botanical-100 transition-colors hidden sm:block">
+                    <i data-lucide="printer" class="w-4 h-4"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-1 max-w-7xl w-full mx-auto p-4 sm:p-6 lg:p-8 flex flex-col lg:flex-row gap-6">
+        
+        <!-- Left Sidebar: Plant Index -->
+        <aside class="w-full lg:w-80 flex-shrink-0 flex flex-col gap-4">
+            <div class="bg-paper-card dark:bg-paper-cardDark p-4 rounded-2xl border border-paper-border dark:border-paper-borderDark shadow-sm flex flex-col h-full max-h-[500px] lg:max-h-[calc(100vh-140px)]">
+                
+                <div class="flex items-center justify-between mb-3">
+                    <h3 class="font-serif font-bold text-base text-slate-900 dark:text-slate-100 flex items-center gap-2">
+                        <i data-lucide="list-tree" class="w-4 h-4 text-botanical-600"></i> Каталог
+                    </h3>
+                    <span id="plantCountBadge" class="text-xs bg-botanical-100 dark:bg-botanical-900 text-botanical-800 dark:text-botanical-200 px-2 py-0.5 rounded-full font-semibold">0</span>
+                </div>
+
+                <!-- Filter Controls -->
+                <div class="flex items-center gap-1 mb-3 text-xs">
+                    <button onclick="filterPlants('all')" class="flex-1 py-1.5 px-2 rounded-lg border border-paper-border dark:border-paper-borderDark hover:bg-botanical-100/50 dark:hover:bg-botanical-900/40 text-center font-medium transition-colors">Всички</button>
+                    <button onclick="filterPlants('toxic')" class="flex-1 py-1.5 px-2 rounded-lg border border-paper-border dark:border-paper-borderDark hover:bg-amber-100/50 dark:hover:bg-amber-950/40 text-center font-medium text-amber-700 dark:text-amber-400 transition-colors">⚠️ Рискови</button>
+                    <button onclick="filterPlants('native')" class="flex-1 py-1.5 px-2 rounded-lg border border-paper-border dark:border-paper-borderDark hover:bg-botanical-100/50 dark:hover:bg-botanical-900/40 text-center font-medium text-botanical-700 dark:text-botanical-400 transition-colors">🌿 Местни</button>
+                </div>
+
+                <!-- Plant List Scrollable -->
+                <div id="plantList" class="flex-1 overflow-y-auto space-y-2 pr-1 custom-scrollbar">
+                    <!-- Dynamic Items Populated JS -->
+                </div>
+            </div>
+        </aside>
+
+        <!-- Right Main View: Interactive Plant Book -->
+        <section class="flex-1 flex flex-col">
+            
+            <!-- Book Top Bar Page Navigation -->
+            <div class="bg-paper-card dark:bg-paper-cardDark px-4 py-3 rounded-2xl border border-paper-border dark:border-paper-borderDark mb-4 flex items-center justify-between shadow-sm">
+                <button onclick="prevPlant()" class="px-3 py-1.5 rounded-lg bg-botanical-100 dark:bg-botanical-900/70 hover:bg-botanical-200 text-botanical-900 dark:text-botanical-100 text-xs font-semibold flex items-center gap-1 transition-colors">
+                    <i data-lucide="chevron-left" class="w-4 h-4"></i> Предишна
+                </button>
+                <span id="pageIndicator" class="font-serif italic text-xs sm:text-sm text-slate-600 dark:text-slate-400 font-medium">Страница 1</span>
+                <button onclick="nextPlant()" class="px-3 py-1.5 rounded-lg bg-botanical-100 dark:bg-botanical-900/70 hover:bg-botanical-200 text-botanical-900 dark:text-botanical-100 text-xs font-semibold flex items-center gap-1 transition-colors">
+                    Следваща <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                </button>
+            </div>
+
+            <!-- Book Spread Layout (2 Pages) -->
+            <div class="bg-paper-bg dark:bg-paper-bgDark rounded-2xl border border-paper-border dark:border-paper-borderDark book-shadow overflow-hidden flex flex-col md:flex-row flex-1 min-h-[600px]">
+                
+                <!-- Left Page: Botanical Specimen Photo & Identity -->
+                <div class="w-full md:w-1/2 p-6 border-b md:border-b-0 md:border-r border-paper-border dark:border-paper-borderDark flex flex-col justify-between relative bg-paper-card/30 dark:bg-paper-cardDark/30">
+                    <div>
+                        <!-- Header Specimen Meta -->
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-xs font-mono font-bold tracking-widest text-botanical-700 dark:text-botanical-400 uppercase">ОБРАЗЕЦ № <span id="plantCode">001</span></span>
+                            <button id="bookmarkBtn" onclick="toggleBookmarkCurrent()" title="Запази в любими" class="p-1.5 rounded-md hover:bg-paper-card dark:hover:bg-paper-cardDark text-slate-600 transition-colors">
+                                <i data-lucide="bookmark" class="w-4 h-4"></i>
+                            </button>
+                        </div>
+
+                        <!-- Image Container with Zoom Trigger -->
+                        <div class="relative group rounded-xl overflow-hidden bg-slate-200 dark:bg-slate-800 border border-paper-border dark:border-paper-borderDark aspect-[3/4] mb-4 shadow-inner flex items-center justify-center cursor-pointer" onclick="openImageModal()">
+                            <img id="plantImage" src="" alt="Botanical photo" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" onerror="handleImageError(this)">
+                            <div id="imageFallback" class="hidden text-center p-4 text-slate-400">
+                                <i data-lucide="image-off" class="w-10 h-10 mx-auto mb-2 opacity-50"></i>
+                                <p class="text-xs font-medium" id="imageFallbackFilename">Снимката не е намерена локално</p>
+                            </div>
+                            <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white text-xs font-medium gap-1.5">
+                                <i data-lucide="maximize-2" class="w-4 h-4"></i> Увеличи снимката
+                            </div>
+                        </div>
+
+                        <!-- Title and Taxonomy -->
+                        <div class="space-y-1">
+                            <h2 id="plantBgName" class="font-serif font-bold text-2xl sm:text-3xl text-slate-900 dark:text-slate-100 leading-snug tracking-tight">Име на растение</h2>
+                            <p id="plantLatinName" class="font-serif italic text-base sm:text-lg text-botanical-800 dark:text-botanical-300 font-medium">Latin Name</p>
+                        </div>
+                    </div>
+
+                    <div class="mt-6 pt-4 border-t border-paper-border dark:border-paper-borderDark space-y-2.5 text-sm">
+                        <div class="flex items-center justify-between">
+                            <span class="text-slate-600 dark:text-slate-400 font-medium">Семейство:</span>
+                            <span id="plantFamily" class="font-semibold text-slate-900 dark:text-slate-100">Семейство</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-slate-600 dark:text-slate-400 font-medium">Статус:</span>
+                            <span id="plantStatus" class="font-semibold text-slate-900 dark:text-slate-100">Статус</span>
+                        </div>
+                        
+                        <!-- Accuracy trigger button -->
+                        <button onclick="toggleAccuracyNote()" class="w-full mt-2 py-2 px-3 rounded-xl bg-paper-card dark:bg-paper-cardDark border border-paper-border dark:border-paper-borderDark text-xs text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-slate-100 flex items-center justify-center gap-1.5 font-medium transition-colors">
+                            <i data-lucide="shield-alert" class="w-4 h-4 text-amber-600 dark:text-amber-400"></i> Забележка за точност
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Right Page: Detailed Botanical Notes & Tabs -->
+                <div class="w-full md:w-1/2 p-6 flex flex-col justify-between">
+                    <div>
+                        <!-- Tabs Navigation -->
+                        <div class="flex items-center gap-1.5 border-b border-paper-border dark:border-paper-borderDark pb-2.5 mb-5 overflow-x-auto custom-scrollbar">
+                            <button id="tab-recognition" onclick="switchTab('recognition')" class="tab-btn active px-3.5 py-2 transition-colors rounded-xl whitespace-nowrap flex items-center gap-1.5">
+                                <i data-lucide="eye" class="w-4 h-4"></i> Разпознаване
+                            </button>
+                            <button id="tab-benefits" onclick="switchTab('benefits')" class="tab-btn px-3.5 py-2 text-slate-600 dark:text-slate-400 font-medium transition-colors rounded-xl whitespace-nowrap flex items-center gap-1.5">
+                                <i data-lucide="leaf" class="w-4 h-4"></i> Ползи
+                            </button>
+                            <button id="tab-risks" onclick="switchTab('risks')" class="tab-btn px-3.5 py-2 text-slate-600 dark:text-slate-400 font-medium transition-colors rounded-xl whitespace-nowrap flex items-center gap-1.5">
+                                <i data-lucide="alert-triangle" class="w-4 h-4"></i> Рискове
+                            </button>
+                            <button id="tab-uses" onclick="switchTab('uses')" class="tab-btn px-3.5 py-2 text-slate-600 dark:text-slate-400 font-medium transition-colors rounded-xl whitespace-nowrap flex items-center gap-1.5">
+                                <i data-lucide="archive" class="w-4 h-4"></i> Употреба
+                            </button>
+                            <button id="tab-facts" onclick="switchTab('facts')" class="tab-btn px-3.5 py-2 text-slate-600 dark:text-slate-400 font-medium transition-colors rounded-xl whitespace-nowrap flex items-center gap-1.5">
+                                <i data-lucide="sparkles" class="w-4 h-4"></i> Факти
+                            </button>
+                        </div>
+
+                        <!-- Dynamic Tab Content Area -->
+                        <div id="tabContentArea" class="space-y-3.5">
+                            <!-- Populated via JS switchTab() -->
+                        </div>
+                    </div>
+
+                    <!-- Page Footer Source Citation -->
+                    <div class="mt-6 pt-4 border-t border-paper-border dark:border-paper-borderDark">
+                        <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+                            <strong class="text-slate-700 dark:text-slate-300">Източници:</strong> <span id="plantSources">Книги и ботанически бази данни.</span>
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- Image Zoom Modal -->
+    <div id="imageModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden items-center justify-center p-4" onclick="closeImageModal()">
+        <div class="max-w-3xl w-full bg-slate-900 rounded-2xl overflow-hidden p-2 relative shadow-2xl" onclick="event.stopPropagation()">
+            <button onclick="closeImageModal()" class="absolute top-4 right-4 text-white/80 hover:text-white bg-black/50 p-2 rounded-full z-10">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+            <img id="modalImage" src="" class="w-full h-auto max-h-[80vh] object-contain rounded-lg">
+            <p id="modalCaption" class="text-center text-xs text-slate-300 mt-2 p-2 italic"></p>
+        </div>
+    </div>
+
+    <!-- Accuracy Modal -->
+    <div id="accuracyModal" class="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm hidden items-center justify-center p-4" onclick="toggleAccuracyNote()">
+        <div class="max-w-md w-full bg-paper-card dark:bg-paper-cardDark border border-paper-border dark:border-paper-borderDark rounded-2xl p-5 shadow-xl relative" onclick="event.stopPropagation()">
+            <div class="flex items-center justify-between mb-3">
+                <h3 class="font-serif font-bold text-base text-slate-900 dark:text-slate-100 flex items-center gap-2">
+                    <i data-lucide="shield-alert" class="w-5 h-5 text-amber-500"></i> Забележка за точност
+                </h3>
+                <button onclick="toggleAccuracyNote()" class="text-slate-400 hover:text-slate-600">
+                    <i data-lucide="x" class="w-4 h-4"></i>
+                </button>
+            </div>
+            <div id="accuracyContent" class="text-xs text-slate-700 dark:text-slate-300 space-y-2 leading-relaxed">
+                <!-- JS populated -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Search Modal -->
+    <div id="searchModal" class="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm hidden items-center justify-center p-4" onclick="toggleSearchModal()">
+        <div class="max-w-lg w-full bg-paper-card dark:bg-paper-cardDark border border-paper-border dark:border-paper-borderDark rounded-2xl p-5 shadow-xl relative" onclick="event.stopPropagation()">
+            <div class="flex items-center justify-between mb-3">
+                <h3 class="font-serif font-bold text-base text-slate-900 dark:text-slate-100">Търсене в хербария</h3>
+                <button onclick="toggleSearchModal()" class="text-slate-400 hover:text-slate-600">
+                    <i data-lucide="x" class="w-4 h-4"></i>
+                </button>
+            </div>
+            <input type="text" id="searchInput" oninput="handleSearch()" placeholder="Въведете българско, латинско име или файл..." class="w-full px-3 py-2 rounded-xl border border-paper-border dark:border-paper-borderDark bg-paper-bg dark:bg-paper-bgDark text-xs text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-botanical-500 mb-3">
+            <div id="searchResults" class="max-h-60 overflow-y-auto space-y-1 custom-scrollbar text-xs">
+                <p class="text-slate-400">Започнете да пишете за търсене...</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Plant Modal -->
+    <div id="addPlantModal" class="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm hidden items-center justify-center p-4" onclick="closeAddPlantModal()">
+        <div class="max-w-lg w-full bg-paper-card dark:bg-paper-cardDark border border-paper-border dark:border-paper-borderDark rounded-2xl p-6 shadow-xl relative max-h-[90vh] overflow-y-auto custom-scrollbar" onclick="event.stopPropagation()">
+            <div class="flex items-center justify-between mb-4">
+                <h3 class="font-serif font-bold text-lg text-slate-900 dark:text-slate-100 flex items-center gap-2">
+                    <i data-lucide="plus-circle" class="w-5 h-5 text-botanical-600"></i> Добавяне на ново растение
+                </h3>
+                <button onclick="closeAddPlantModal()" class="text-slate-400 hover:text-slate-600">
+                    <i data-lucide="x" class="w-4 h-4"></i>
+                </button>
+            </div>
+            <form onsubmit="handleAddNewPlant(event)" class="space-y-3 text-xs">
+                <div>
+                    <label class="block font-semibold mb-1">Българско име *</label>
+                    <input type="text" id="newBgName" required class="w-full px-3 py-2 rounded-lg border border-paper-border dark:border-paper-borderDark bg-paper-bg dark:bg-paper-bgDark">
+                </div>
+                <div>
+                    <label class="block font-semibold mb-1">Латинско име *</label>
+                    <input type="text" id="newLatinName" required class="w-full px-3 py-2 rounded-lg border border-paper-border dark:border-paper-borderDark bg-paper-bg dark:bg-paper-bgDark">
+                </div>
+                <div class="grid grid-cols-2 gap-2">
+                    <div>
+                        <label class="block font-semibold mb-1">Семейство</label>
+                        <input type="text" id="newFamily" placeholder="напр. Върбовкови" class="w-full px-3 py-2 rounded-lg border border-paper-border dark:border-paper-borderDark bg-paper-bg dark:bg-paper-bgDark">
+                    </div>
+                    <div>
+                        <label class="block font-semibold mb-1">Статус</label>
+                        <input type="text" id="newStatus" placeholder="напр. Многогодишно" class="w-full px-3 py-2 rounded-lg border border-paper-border dark:border-paper-borderDark bg-paper-bg dark:bg-paper-bgDark">
+                    </div>
+                </div>
+                <div>
+                    <label class="block font-semibold mb-1">Име на файла / URL на снимка (напр. IMG_1234.jpg)</label>
+                    <input type="text" id="newImageUrl" placeholder="IMG_1234.jpg" class="w-full px-3 py-2 rounded-lg border border-paper-border dark:border-paper-borderDark bg-paper-bg dark:bg-paper-bgDark">
+                </div>
+                <div>
+                    <label class="block font-semibold mb-1">Разпознаване & белези</label>
+                    <textarea id="newRecognition" rows="3" class="w-full px-3 py-2 rounded-lg border border-paper-border dark:border-paper-borderDark bg-paper-bg dark:bg-paper-bgDark"></textarea>
+                </div>
+                <div>
+                    <label class="block font-semibold mb-1">Рискове / Предупреждения</label>
+                    <textarea id="newRisks" rows="2" class="w-full px-3 py-2 rounded-lg border border-paper-border dark:border-paper-borderDark bg-paper-bg dark:bg-paper-bgDark"></textarea>
+                </div>
+                <div class="pt-2 flex justify-end gap-2">
+                    <button type="button" onclick="closeAddPlantModal()" class="px-4 py-2 rounded-lg border border-paper-border dark:border-paper-borderDark">Отказ</button>
+                    <button type="submit" class="px-4 py-2 rounded-lg bg-botanical-600 text-white font-semibold">Запази в книгата</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Botanical Database mapped to IMG files provided
+        const plantDatabase = [
+            {
+                id: 'epilobium-2214',
+                code: '001',
+                bgName: 'Теснолистна върбовка',
+                latinName: 'Epilobium angustifolium',
+                family: 'Върбовкови (Onagraceae)',
+                status: 'Многогодишно • Местен вид',
+                isToxic: false,
+                isNative: true,
+                image: 'IMG_2214.jpg',
+                recognition: {
+                    mainTraits: 'Високи изправени стъбла, тесни ланцетни листа и дълги връхни гроздове от пурпурнорозови четирилистни цветове.',
+                    onPhoto: 'Расте по сечища, горски окрайнини, пожарища и влажни открити места; разпространена е в България.',
+                    doubles: 'Други върбовки (Epilobium), но мащабният розов клас и тесните листа силно насочват към този вид.'
+                },
+                benefits: {
+                    ecology: 'Расте по сечища, горски окрайнини, пожарища и влажни открити места.',
+                    nectar: 'Нектароносно растение, посещавано от пчели и други насекоми.',
+                    soil: 'Бързо колонизира нарушени почви и подпомага ранното възстановяване на растителността.'
+                },
+                risks: {
+                    toxicity: 'Не е известна като силно токсична, но не е подходяща за самолечение при хронични заболявания.',
+                    animals: 'Безопасна в естествената си среда при паша.',
+                    safetyNotice: '⚠️ Не се препоръчва приемане на билкови продукти без лекарска консултация.',
+                    invasiveness: 'Не е инвазивен вид в естествените си местообитания в България.'
+                },
+                uses: {
+                    traditional: 'Младите леторасти традиционно се използват като зеленчук, а листата — за чай.',
+                    history: 'Традиционна употреба при урологични оплаквания, която обаче не е клинично доказано лечение.',
+                    warning: '❌ Няма достатъчно качествени клинични данни за медицински свойства.'
+                },
+                facts: [
+                    'Видът често е сред първите растения, които цъфтят масово след горски пожар или сеч.'
+                ],
+                accuracyNote: {
+                    confirmed: 'Epilobium angustifolium (Теснолистна върбовка)',
+                    doubts: 'Няма съществени съмнения.',
+                    reason: 'Характерен хабитус и съцветие.'
+                },
+                sources: 'Българска флора; Kew Science.'
+            },
+            {
+                id: 'ranunculus-1759',
+                code: '002',
+                bgName: 'Лютиче',
+                latinName: 'Ranunculus sp., вероятно Ranunculus acris',
+                family: 'Лютикови (Ranunculaceae)',
+                status: 'Многогодишно • Местен вид',
+                isToxic: true,
+                isNative: true,
+                image: 'IMG_1759.jpg',
+                recognition: {
+                    mainTraits: 'Лъскав жълт цвят с пет венчелистчета и много тичинки в центъра.',
+                    onPhoto: 'Вижда се лъскав жълт цвят. Листата и плодчетата не се виждат ясно.',
+                    doubles: 'Многобройни жълтоцветни видове Ranunculus.'
+                },
+                benefits: {
+                    ecology: 'Лютичета са обичайни по влажни ливади и тревни места в България.',
+                    nectar: 'Цветовете осигуряват прашец и нектар на насекоми.',
+                    soil: 'Поддържа разнообразието на ливадните съобщества.'
+                },
+                risks: {
+                    toxicity: '⚠️ Пресните растения съдържат дразнещи вещества (протоанемонин).',
+                    animals: 'Може да предизвика раздразнение на кожа, уста и храносмилателен тракт; рисково за добитък.',
+                    safetyNotice: 'Не се използва за храна или самолечение.',
+                    invasiveness: 'Местен вид за България.'
+                },
+                uses: {
+                    traditional: 'Исторически външни приложения в народната медицина не са безопасна препоръка.',
+                    history: 'Декоративна и природозащитна стойност.',
+                    warning: '❌ Опасно за вътрешна консумация!'
+                },
+                facts: [
+                    'Лъскавият вид на венчелистчетата се дължи на специфична клетъчна структура, която отразява светлината.'
+                ],
+                accuracyNote: {
+                    confirmed: 'Род Ranunculus.',
+                    doubts: 'Точният вид.',
+                    reason: 'Листата и цялото растение не се виждат ясно.'
+                },
+                sources: 'Българска флора; Plants of the World Online.'
+            },
+            {
+                id: 'neotinea-1766',
+                code: '003',
+                bgName: 'Прегоряла орхидея',
+                latinName: 'Neotinea ustulata',
+                family: 'Орхидеи (Orchidaceae)',
+                status: 'Многогодишно • Защитен вид',
+                isToxic: false,
+                isNative: true,
+                image: 'IMG_1766.jpg',
+                recognition: {
+                    mainTraits: 'Компактно яйцевидно съцветие с тъмнопурпурни до „прегорели“ връхни пъпки и дребни розовопурпурни цветове.',
+                    onPhoto: 'Ясно се виждат тъмните връхни пъпки и широките листа в основата.',
+                    doubles: 'Други ливадни орхидеи, особено видове Orchis и Anacamptis.'
+                },
+                benefits: {
+                    ecology: 'Видът е местен за България и за Европа до Кавказ.',
+                    nectar: 'Подпомага специализирани взаимодействия с опрашители и гъби в почвата.',
+                    soil: 'Индикатор за зачувани ливадни екосистеми.'
+                },
+                risks: {
+                    toxicity: 'Не е токсична, но е защитена от закона.',
+                    animals: 'Унищожаването на местообитания застрашава вида.',
+                    safetyNotice: '⚠️ Не е растение за бране, изкопаване или преместване.',
+                    invasiveness: 'Местен и уязвим вид.'
+                },
+                uses: {
+                    traditional: 'Не използвайте грудките за „салеп“; това уврежда популациите на дивите орхидеи.',
+                    history: 'Научна, природозащитна и фотографска стойност.',
+                    warning: '❌ Забранено бране от дивата природа!'
+                },
+                facts: [
+                    'Семената на орхидеите са почти без хранителни запаси и при покълване зависят от специфични почвени гъби.'
+                ],
+                accuracyNote: {
+                    confirmed: 'Neotinea ustulata.',
+                    doubts: 'Няма.',
+                    reason: 'Характерен оцветка и форма на съцветието.'
+                },
+                sources: 'Червена книга на България; Kew Science.'
+            },
+            {
+                id: 'leontopodium-2372',
+                code: '004',
+                bgName: 'Алпийски еделвайс',
+                latinName: 'Leontopodium nivale subsp. alpinum',
+                family: 'Сложноцветни (Asteraceae)',
+                status: 'Многогодишно • Защитен вид',
+                isToxic: false,
+                isNative: true,
+                image: 'IMG_2372.jpg',
+                recognition: {
+                    mainTraits: 'Сребристовлакнеста листна розетка и мъхесто, жълтеникаво-бяло съцветие със звездовидни прицветници.',
+                    onPhoto: 'Високопланински вид, заснети са сребристата розетка и мъхестото съцветие.',
+                    doubles: 'Gnaphalium и други беловлакнести сложноцветни.'
+                },
+                benefits: {
+                    ecology: 'Поддържа високопланинското растително разнообразие и насекомите в алпийския пояс.',
+                    nectar: 'Осигурява ресурс за планински опрашители.',
+                    soil: 'Расте по скалисти и каменисти алпийски терени.'
+                },
+                risks: {
+                    toxicity: 'Не е отровно, но е строго защитено.',
+                    animals: 'Не събирайте растения от природата.',
+                    safetyNotice: '⚠️ Забранено бране.',
+                    invasiveness: 'Местен алпийски вид.'
+                },
+                uses: {
+                    traditional: 'Няма утвърдени клинични лечебни показания.',
+                    history: 'Символ на планинарството и природата.',
+                    warning: '❌ Брането се казва с глоби по Закона за биологичното разнообразие.'
+                },
+                facts: [
+                    'Научното име на често наричания „алпийски еделвайс“ днес се отнася към Leontopodium nivale subsp. alpinum.'
+                ],
+                accuracyNote: {
+                    confirmed: 'Leontopodium nivale subsp. alpinum.',
+                    doubts: 'Няма.',
+                    reason: 'Типичен алпийски морфологичен облик.'
+                },
+                sources: 'Закон за биологичното разнообразие; Българска флора.'
+            },
+            {
+                id: 'leontopodium-2373',
+                code: '005',
+                bgName: 'Алпийски еделвайс (Втори детайл)',
+                latinName: 'Leontopodium nivale subsp. alpinum',
+                family: 'Сложноцветни (Asteraceae)',
+                status: 'Многогодишно • Защитен вид',
+                isToxic: false,
+                isNative: true,
+                image: 'IMG_2373.jpg',
+                recognition: {
+                    mainTraits: 'Ниска туфа от сребристобели, гъсто мъхести листа; съцветието е с жълтеникави центрове и бели прицветници.',
+                    onPhoto: 'Близък план на съцветието с гъсти бели власинки.',
+                    doubles: 'Други беловлакнести сложноцветни.'
+                },
+                benefits: {
+                    ecology: 'Част от високопланинското биоразнообразие.',
+                    nectar: 'Ресурс за опрашители в алпийския пояс.',
+                    soil: 'Защитава почвата от ерозия по високите скали.'
+                },
+                risks: {
+                    toxicity: 'Не е за консумация.',
+                    animals: 'Застрашен от некоректно събиране.',
+                    safetyNotice: 'Пазете находищата в националните паркове.',
+                    invasiveness: 'Местен вид.'
+                },
+                uses: {
+                    traditional: 'Декоративно алпинеумно растение (ако е от разсадник).',
+                    history: 'Символ на високите планини.',
+                    warning: '❌ Не събирайте диви екземпляри.'
+                },
+                facts: [
+                    'Белите власинки намаляват загубата на вода и предпазват тъканите от студ, вятър и силна UV радиация.'
+                ],
+                accuracyNote: {
+                    confirmed: 'Leontopodium nivale subsp. alpinum.',
+                    doubts: 'Няма.',
+                    reason: 'Ясен детайл на прицветниците.'
+                },
+                sources: 'Червена книга на България.'
+            },
+            {
+                id: 'fungus-3284',
+                code: '006',
+                bgName: 'Неидентифицирана гъба с пръстен',
+                latinName: 'Неизвестен вид (Basidiomycota)',
+                family: 'Базидиеви гъби (Basidiomycota)',
+                status: 'Гъба • Неопределен статус',
+                isToxic: true,
+                isNative: true,
+                image: 'IMG_3284.jpg',
+                recognition: {
+                    mainTraits: 'Светлокафява шапка, тъмни пластинки, светло пънче и ясно видим пръстен.',
+                    onPhoto: 'Подобен набор белези се среща при множество родове гъби.',
+                    doubles: 'Възможни са както ядливи, така и смъртоносно опасни видове.'
+                },
+                benefits: {
+                    ecology: 'Гъбите разграждат органична материя и участват в кръговрата на веществата в почвата.',
+                    nectar: 'Няма.',
+                    soil: 'Спомага за образуването на хумус.'
+                },
+                risks: {
+                    toxicity: '⚠️ ОПАСНОСТ ОТ ОТРАВЯНЕ: Не консумирайте!',
+                    animals: 'Възможно да е силно отровна за хора и животни.',
+                    safetyNotice: 'Снимката не показва основата на пънчето, спорите и миризмата.',
+                    invasiveness: 'Неизвестен статус.'
+                },
+                uses: {
+                    traditional: 'Няма.',
+                    history: 'Само фотографско наблюдение.',
+                    warning: '❌ Абсолютно забранена за консумация без микологичен анализ!'
+                },
+                facts: [
+                    'Видимата „гъба“ е само плодното тяло; основната част на организма е мицелът в почвата.'
+                ],
+                accuracyNote: {
+                    confirmed: 'Пластинеста гъба с пръстен.',
+                    doubts: 'Род, вид и ядливост.',
+                    reason: 'Липсват критични морфологични белези и споров отпечатък.'
+                },
+                sources: 'Микологичен справочник.'
+            },
+            {
+                id: 'crocus-4387',
+                code: '007',
+                bgName: 'Жълт минзухар (вероятно)',
+                latinName: 'Crocus sp., възможно Crocus flavus',
+                family: 'Перуникови (Iridaceae)',
+                status: 'Многогодишно • Местен вид',
+                isToxic: false,
+                isNative: true,
+                image: 'IMG_4387.jpg',
+                recognition: {
+                    mainTraits: 'Единичен яркожълт, бокаловиден цвят с шест околоцветни дяла върху тънка тръбичка.',
+                    onPhoto: 'Вижда се яркожълт минзухар, цъфтящ рано през пролетта.',
+                    doubles: 'Есенният мразовец (Colchicum) и други жълти минзухари.'
+                },
+                benefits: {
+                    ecology: 'Родът Crocus е добре представен в България.',
+                    nectar: 'Ранният цъфтеж е ценен източник на прашец за насекоми.',
+                    soil: 'Расте по ливади и храсталаци.'
+                },
+                risks: {
+                    toxicity: 'Не консумирайте луковиците или цветовете.',
+                    animals: 'Внимавайте за объркване с отровния мразовец.',
+                    safetyNotice: '⚠️ Мразовецът съдържа токсичен колхицин и има 6 тичинки.',
+                    invasiveness: 'Местен вид.'
+                },
+                uses: {
+                    traditional: 'Предимно декоративна и природозащитна стойност.',
+                    history: 'Само шафрановият минзухар (Crocus sativus) е подправка.',
+                    warning: '❌ Не използвайте дивите минзухари за подправки.'
+                },
+                facts: [
+                    'При минзухарите често се виждат само цветовете, докато листата се развиват по различно време.'
+                ],
+                accuracyNote: {
+                    confirmed: 'Род Crocus.',
+                    doubts: 'Точният вид (вероятно Crocus flavus).',
+                    reason: 'Необходим е детайл на луковицата и прилистниците.'
+                },
+                sources: 'Българска флора; Kew Science.'
+            },
+            {
+                id: 'crocus-4460',
+                code: '008',
+                bgName: 'Лилав минзухар',
+                latinName: 'Crocus sp.',
+                family: 'Перуникови (Iridaceae)',
+                status: 'Многогодишно • Местен вид',
+                isToxic: false,
+                isNative: true,
+                image: 'IMG_4460.jpg',
+                recognition: {
+                    mainTraits: 'Виолетов цвят с жълто-оранжеви репродуктивни части и тесни тревисти листа.',
+                    onPhoto: 'Ясен лилав цвят с жълти прашници.',
+                    doubles: 'Есенен мразовец (Colchicum) и други диви минзухари.'
+                },
+                benefits: {
+                    ecology: 'В България се срещат множество диви видове минзухари.',
+                    nectar: 'Ранният цъфтеж предлага прашец за събуждащите се опрашители.',
+                    soil: 'Характерен пролетен геофит.'
+                },
+                risks: {
+                    toxicity: 'Не е отровен, но лесно се бърка с мразовец.',
+                    animals: 'Мразовецът е силно отровен за добитък и хора.',
+                    safetyNotice: 'Не берете и не консумирайте.',
+                    invasiveness: 'Местен вид.'
+                },
+                uses: {
+                    traditional: 'Декоративна и природонаблюдателна стойност.',
+                    history: 'Традиционен пролетен символ.',
+                    warning: '❌ Шафранът НЕ се добива от този див вид.'
+                },
+                facts: [
+                    'Шафранът идва единствено от близалцата на Crocus sativus, не от всеки лилав минзухар.'
+                ],
+                accuracyNote: {
+                    confirmed: 'Род Crocus.',
+                    doubts: 'Видово определяне.',
+                    reason: 'Липсва луковична обвивка за точно видово определяне.'
+                },
+                sources: 'Българска флора.'
+            },
+            {
+                id: 'helleborus-4479',
+                code: '009',
+                bgName: 'Миризлива чемерика',
+                latinName: 'Helleborus odorus',
+                family: 'Лютикови (Ranunculaceae)',
+                status: 'Многогодишно • ОТРОВНО • Местен вид',
+                isToxic: true,
+                isNative: true,
+                image: 'IMG_4479.jpg',
+                recognition: {
+                    mainTraits: 'Увиснали зеленикаво-жълти цветове с многобройни тичинки и кожести, длановидно разделени листа.',
+                    onPhoto: 'Характерните чашевидни зелени цветове и разперени вечнозелени листа.',
+                    doubles: 'Други чемерики (Helleborus orientalis и хибриди).'
+                },
+                benefits: {
+                    ecology: 'Среща се в гори и храсталаци в България.',
+                    nectar: 'Ранно цъфтящ вид, важен за активните в хладно време опрашители.',
+                    soil: 'Горски подлесен вид.'
+                },
+                risks: {
+                    toxicity: '⚠️ СИЛНО ОТРОВНА при поглъщане (съдържа хелеборин и гликозиди).',
+                    animals: 'Токсична за кучета, котки, коне и добитък.',
+                    safetyNotice: 'Сокът може да раздразни кожата и лигавиците.',
+                    invasiveness: 'Местен вид.'
+                },
+                uses: {
+                    traditional: 'Старите лечебни приложения са изключително рискови.',
+                    history: 'Декоративен вид за сенчести градини.',
+                    warning: '❌ Строго забранена за консумация или билкови извлеци!'
+                },
+                facts: [
+                    'Зелените „венчелистчета“ всъщност са трайни чашелистчета; истинските венчелистчета са преобразувани в нектарници.'
+                ],
+                accuracyNote: {
+                    confirmed: 'Helleborus odorus.',
+                    doubts: 'Няма.',
+                    reason: 'Ясни белези на цветовете и зелените чашелистчета.'
+                },
+                sources: 'Българска флора; ASPCA Toxic Plants Database.'
+            },
+            {
+                id: 'pulmonaria-4754',
+                code: '010',
+                bgName: 'Медуница',
+                latinName: 'Pulmonaria officinalis, вероятно',
+                family: 'Грапаволистни (Boraginaceae)',
+                status: 'Многогодишно • Местен вид',
+                isToxic: false,
+                isNative: true,
+                image: 'IMG_4754.jpg',
+                recognition: {
+                    mainTraits: 'Цветовете са сини до виолетови, а част от пъпките са розови; листата са грапави и ланцетно-яйцевидни.',
+                    onPhoto: 'Виждат се розови пъпки и отворени сини цветове на едно и също растение.',
+                    doubles: 'Други видове медуница (Pulmonaria).'
+                },
+                benefits: {
+                    ecology: 'Растение от сенчести влажни гори.',
+                    nectar: 'Ранен източник на нектар за пчели и опрашители.',
+                    soil: 'Поддържа хумусния слой в гората.'
+                },
+                risks: {
+                    toxicity: 'Не е силно отровна, но съдържа пиролизидинови алкалоиди.',
+                    animals: 'Не се препоръчва продължителна паша.',
+                    safetyNotice: '⚠️ Не приемайте като лечебен чай без медицинска консултация.',
+                    invasiveness: 'Местен вид.'
+                },
+                uses: {
+                    traditional: 'Използвана традиционно при кашлица и дихателни оплаквания.',
+                    history: 'Подходяща за сенчести декоративни градини.',
+                    warning: '❌ Не приемайте в големи количества или продължително време.'
+                },
+                facts: [
+                    'Промяната от розово към синьо е свързана с изменения в киселинността (pH) на клетъчния сок по време на развитието на цвета.'
+                ],
+                accuracyNote: {
+                    confirmed: 'Род Pulmonaria.',
+                    doubts: 'Точен вид (P. officinalis или P. rubra/mollis).',
+                    reason: 'Не се вижда петнистостта на лятната листна розетка.'
+                },
+                sources: 'Българска флора; European Medicines Agency.'
+            },
+            {
+                id: 'russula-5211',
+                code: '011',
+                bgName: 'Червена гълъбка (вероятно)',
+                latinName: 'Russula sp.',
+                family: 'Гълъбкови (Russulaceae / Basidiomycota)',
+                status: 'Гъба • Потенциално рискова',
+                isToxic: true,
+                isNative: true,
+                image: 'IMG_5211.jpg',
+                recognition: {
+                    mainTraits: 'Червеникава шапка с жълтеникави участъци и светли пластинки; расте сред листна постеля.',
+                    onPhoto: 'Червена шапка, полускрита от горска листа.',
+                    doubles: 'Множество червени гълъбки, включително отровната бясна гълъбка (Russula emetica).'
+                },
+                benefits: {
+                    ecology: 'Образува микориза с горски дървета.',
+                    nectar: 'Няма.',
+                    soil: 'Спомага храненето на дърветата.'
+                },
+                risks: {
+                    toxicity: '⚠️ НЕ КОНСУМИРАЙТЕ: Има много стомашно-чревно отровни червени гълъбки.',
+                    animals: 'Опасност за хора и животни при поглъщане.',
+                    safetyNotice: 'Не може да се определи ядливост по снимка.',
+                    invasiveness: 'Местен вид.'
+                },
+                uses: {
+                    traditional: 'Няма.',
+                    history: 'Няма безопасна употреба.',
+                    warning: '❌ Не яжте червени гълъбки без лют/лютив тест от специалист.'
+                },
+                facts: [
+                    'При повечето гълъбки месото и пластинките са трошливи и се чупят „като тебешир“ без влакна.'
+                ],
+                accuracyNote: {
+                    confirmed: 'Род Russula.',
+                    doubts: 'Точен вид и ядливост.',
+                    reason: 'Липсват снимки на пластинките, пънчето и вкус/мирис.'
+                },
+                sources: 'Микологични бази данни.'
+            },
+            {
+                id: 'hemerocallis-5214',
+                code: '012',
+                bgName: 'Оранжева лилейка',
+                latinName: 'Hemerocallis fulva',
+                family: 'Асфоделови (Asphodelaceae)',
+                status: 'Многогодишно • ТРАНСФОРМИРАНО / Декоративно',
+                isToxic: true,
+                isNative: false,
+                image: 'IMG_5214.jpg',
+                recognition: {
+                    mainTraits: 'Оранжеви, шестделни фуниевидни цветове върху високи безлистни цветоноси и дълги ремъковидни листа.',
+                    onPhoto: 'Ярък оранжев цвят, популярен в градини.',
+                    doubles: 'Истински лилии (Lilium) и други сортове Hemerocallis.'
+                },
+                benefits: {
+                    ecology: 'Отглежда се декоративно, посещава се от пеперуди.',
+                    nectar: 'Осигурява нектар за едри насекоми.',
+                    soil: 'Устойчиво градинско растение.'
+                },
+                risks: {
+                    toxicity: '⚠️ СМЪРТОНОСНО ТОКСИЧНА ЗА КОТКИ!',
+                    animals: 'Дори малки количества (прашец, вода от ваза) причиняват остра бъбречна недостатъчност при котки.',
+                    safetyNotice: 'Дръжте далеч от котки.',
+                    invasiveness: 'В някои страни дивее, у нас е предимно градинско.'
+                },
+                uses: {
+                    traditional: 'Декоративно растение.',
+                    history: 'В Азия се ползват сушени пъпки (зонг цо), но градинските сортове не бива да се ядат.',
+                    warning: '❌ Не позволявайте на котки да докосват растението!'
+                },
+                facts: [
+                    'Името Hemerocallis означава „красота за един ден“ — всеки цвят цъфти само 24 часа.'
+                ],
+                accuracyNote: {
+                    confirmed: 'Hemerocallis fulva.',
+                    doubts: 'Конкретен сорт/хибрид.',
+                    reason: 'Декоративна форма.'
+                },
+                sources: 'ASPCA Animal Poison Control; Kew Science.'
+            },
+            {
+                id: 'cirsium-5496',
+                code: '013',
+                bgName: 'Бодил',
+                latinName: 'Cirsium sp., вероятно Cirsium vulgare',
+                family: 'Сложноцветни (Asteraceae)',
+                status: 'Двегодишно/Многогодишно • Местен вид',
+                isToxic: false,
+                isNative: true,
+                image: 'IMG_5496.jpg',
+                recognition: {
+                    mainTraits: 'Пурпурна кошничка от тръбести цветове, силно бодливи листа и бодливи прицветници.',
+                    onPhoto: 'Бодлива цветна кошничка в пурпурен цвят.',
+                    doubles: 'Carduus, Cirsium и други бодливи сложноцветни.'
+                },
+                benefits: {
+                    ecology: 'Расте по сухи, нарушени и открити места в България.',
+                    nectar: 'Изключително богат източник на нектар за пеперуди и пчели.',
+                    soil: 'Семената са храна за щиглеци и други птици.'
+                },
+                risks: {
+                    toxicity: 'Не е отровно.',
+                    animals: 'Бодлите причиняват механични наранявания.',
+                    safetyNotice: 'Носете ръкавици при контакт.',
+                    invasiveness: 'Може да се държи като плевел на пасища.'
+                },
+                uses: {
+                    traditional: 'Екологична и опрашителна стойност.',
+                    history: 'Няма утвърдена медицинска употреба.',
+                    warning: '❌ Не се препоръчва вътрешен прием.'
+                },
+                facts: [
+                    'Пурпурната кошничка не е единичен цвят, а съвкупност от десетки миниатюрни тръбести цветове.'
+                ],
+                accuracyNote: {
+                    confirmed: 'Род Cirsium.',
+                    doubts: 'Точният вид.',
+                    reason: 'Нужен е детайлен изглед на бодлите по стъблото.'
+                },
+                sources: 'Българска флора.'
+            },
+            {
+                id: 'vicia-5503',
+                code: '014',
+                bgName: 'Фий',
+                latinName: 'Vicia sp., вероятно Vicia cracca',
+                family: 'Бобови (Fabaceae)',
+                status: 'Многогодишно • Местен вид',
+                isToxic: false,
+                isNative: true,
+                image: 'IMG_5503.jpg',
+                recognition: {
+                    mainTraits: 'Перести листа с тесни листчета и мустачки; бледолилави пеперудоцветни цветове в едностранен грозд.',
+                    onPhoto: 'Увивно бобово растение с виолетови цветове.',
+                    doubles: 'Други видове Vicia, Lathyrus и Astragalus.'
+                },
+                benefits: {
+                    ecology: 'Широко разпространен по ливади и крайпътни места.',
+                    nectar: 'Обогатява почвата с азот благодарение на азотфиксиращи бактерии.',
+                    soil: 'Подобрител на почвеното състояние.'
+                },
+                risks: {
+                    toxicity: 'Семената на някои видове Vicia съдържат токсични аминокиселини при голяма консумация.',
+                    animals: 'Фуражно, но не бива да преобладава изцяло.',
+                    safetyNotice: 'Не яжте диви семена.',
+                    invasiveness: 'Местен вид.'
+                },
+                uses: {
+                    traditional: 'Използвана се за зелено торене и фураж.',
+                    history: 'Важна част от природните ливади.',
+                    warning: '❌ Не консумирайте дивите шушулки.'
+                },
+                facts: [
+                    'Увивните мустачки на върха на листата са всъщност видоизменени крайни листчета.'
+                ],
+                accuracyNote: {
+                    confirmed: 'Род Vicia.',
+                    doubts: 'Видово определяне (V. cracca или V. villosa).',
+                    reason: 'Нужно е да се види влакнестостта на прилистниците.'
+                },
+                sources: 'Българска флора.'
+            },
+            {
+                id: 'digitalis-5504',
+                code: '015',
+                bgName: 'Едроцветен напръстник',
+                latinName: 'Digitalis grandiflora',
+                family: 'Живеничеви (Plantaginaceae)',
+                status: 'Многогодишно • СИЛНО ОТРОВНО • Местен вид',
+                isToxic: true,
+                isNative: true,
+                image: 'IMG_5504.jpg',
+                recognition: {
+                    mainTraits: 'Високо едностранно съцветие с жълтеникави, тръбесто-камбанковидни цветове с кафяви мрежовидни шарки отвътре.',
+                    onPhoto: 'Ясно се виждат едрите жълтеникави камбанки с петна.',
+                    doubles: 'Digitalis lanata и други напръстници.'
+                },
+                benefits: {
+                    ecology: 'Осигурява нектар за земни пчели.',
+                    nectar: 'Само специализирани опрашители могат да влязат в цвета.',
+                    soil: 'Расте в планински гори и храсталаци.'
+                },
+                risks: {
+                    toxicity: '⚠️ СМЪРТОНОСНО ОТРОВЕН! Съдържа сърдечни гликозиди (дигоксин, дигитоксин).',
+                    animals: 'Токсичен за хора, кучета, котки и коне при най-малко поглъщане.',
+                    safetyNotice: 'Предизвиква тежки аритмии и спиране на сърцето.',
+                    invasiveness: 'Местен вид.'
+                },
+                uses: {
+                    traditional: 'Служи за извличане на фармацевтични субстанции под строг контрол.',
+                    history: 'Класическо медицинско растение.',
+                    warning: '❌ Абсолютно забранени домашни чаеве или настойки!'
+                },
+                facts: [
+                    'Медицинската история на родовете Digitalis е сред най-известните примери за превръщането на отрова в животоспасяващо сърдечно лекарство.'
+                ],
+                accuracyNote: {
+                    confirmed: 'Digitalis grandiflora.',
+                    doubts: 'Няма.',
+                    reason: 'Характерни жълти цветове с кафеникава мрежа отвътре.'
+                },
+                sources: 'Българска флора; Pharmacognosy textbooks.'
+            },
+            {
+                id: 'eupatorium-5505',
+                code: '016',
+                bgName: 'Конопена водна конопка',
+                latinName: 'Eupatorium cannabinum',
+                family: 'Сложноцветни (Asteraceae)',
+                status: 'Многогодишно • Потенциално рисково',
+                isToxic: true,
+                isNative: true,
+                image: 'IMG_5505.jpg',
+                recognition: {
+                    mainTraits: 'Рехави плоски съцветия от дребни розоволилави тръбести цветове и срещуположни, триделни назъбени листа.',
+                    onPhoto: 'Вижда се край влажни места с характерните розови щитовидни съцветия.',
+                    doubles: 'Eupatorium и Ageratina.'
+                },
+                benefits: {
+                    ecology: 'Расте край реки, влажни гори и храсталаци.',
+                    nectar: 'Изключителен магнитен ресурс за пеперуди и пчели.',
+                    soil: 'Укрепва влажни крайбрежни почви.'
+                },
+                risks: {
+                    toxicity: '⚠️ Съдържа пиролизидинови алкалоиди, опасни за черния дроб.',
+                    animals: 'Не се препоръчва консумация от добитък.',
+                    safetyNotice: 'Не правете домашни извлеци.',
+                    invasiveness: 'Местен вид.'
+                },
+                uses: {
+                    traditional: 'Ползвана в миналото в народната медицина, но без клинични доказателства.',
+                    history: 'Декоративен вид за диви влажни градини.',
+                    warning: '❌ Вреда за черния дроб при вътрешен прием!'
+                },
+                facts: [
+                    'Въпреки името си, растението няма никаква ботаническа връзка с истинския коноп (Cannabis).'
+                ],
+                accuracyNote: {
+                    confirmed: 'Eupatorium cannabinum.',
+                    doubts: 'Няма.',
+                    reason: 'Типична форма на съцветията и листата.'
+                },
+                sources: 'Българска флора; EMA Monographs.'
+            },
+            {
+                id: 'prunus-5510',
+                code: '017',
+                bgName: 'Слива',
+                latinName: 'Prunus domestica, вероятно',
+                family: 'Розоцветни (Rosaceae)',
+                status: 'Дърво • Хранителен вид',
+                isToxic: false,
+                isNative: true,
+                image: 'IMG_5510.jpg',
+                recognition: {
+                    mainTraits: 'Дърво с продълговати зелени костилкови плодове и назъбени елиптични листа.',
+                    onPhoto: 'Клон с неузрели зелени сливи.',
+                    doubles: 'Джанка (Prunus cerasifera), трънка (Prunus spinosa).'
+                },
+                benefits: {
+                    ecology: 'Широко отглеждано овощно дърво.',
+                    nectar: 'Пролетният цъфтеж е източник на нектар за пчели.',
+                    soil: 'Плодовете са храна за хора и птици.'
+                },
+                risks: {
+                    toxicity: 'Костилките съдържат амигдалин (цианогенен гликозид).',
+                    animals: 'Не дъвчете и не яжте вътрешността на ядките.',
+                    safetyNotice: 'Неузрелите плодове дразнят стомаха.',
+                    invasiveness: 'Културен вид.'
+                },
+                uses: {
+                    traditional: 'Консумация на плодове, конфитюри, сушени сливи и напитки.',
+                    history: 'Важна стопанска култура в България.',
+                    warning: '❌ Не консумирайте ядките от костилките.'
+                },
+                facts: [
+                    'Сушените сини сливи са традиционен лек за стимулиране на храносмилането поради съдържанието на сорбитол и фибри.'
+                ],
+                accuracyNote: {
+                    confirmed: 'Род Prunus.',
+                    doubts: 'Точен сорт на Prunus domestica.',
+                    reason: 'Плодовете са все още зелени.'
+                },
+                sources: 'Българска флора.'
+            },
+            {
+                id: 'viburnum-5506',
+                code: '018',
+                bgName: 'Калина (вероятно)',
+                latinName: 'Viburnum lantana, вероятно',
+                family: 'Калинови (Adoxaceae)',
+                status: 'Храст • Местен вид',
+                isToxic: false,
+                isNative: true,
+                image: 'IMG_5506.jpg',
+                recognition: {
+                    mainTraits: 'Бели дребни цветове в разклонени плоски съцветия, срещуположни елиптични листа.',
+                    onPhoto: 'Храст с бели съцветия и зелени пъпки.',
+                    doubles: 'Други видове Viburnum (напр. Viburnum opulus).'
+                },
+                benefits: {
+                    ecology: 'Среща се в храсталаци и горски окрайнини.',
+                    nectar: 'Съцветията привличат множество опрашители.',
+                    soil: 'Зрелите плодове са важна храна за горските птици.'
+                },
+                risks: {
+                    toxicity: 'Суровите плодове на някои калини могат да причинят стомашен дискомфорт.',
+                    animals: 'Безопасен храст за птици.',
+                    safetyNotice: 'Не консумирайте плодове без точно видово потвърждение.',
+                    invasiveness: 'Местен вид.'
+                },
+                uses: {
+                    traditional: 'Декоративен храст за паркове и живи плетове.',
+                    history: 'Традиционно присъства в българския фолклор.',
+                    warning: '❌ Не яжте сурови плодове.'
+                },
+                facts: [
+                    'При много калини плодовете сменят цвета си от зелен през червен до лъскаво черен при пълно узряване.'
+                ],
+                accuracyNote: {
+                    confirmed: 'Род Viburnum.',
+                    doubts: 'Вид (V. lantana или V. opulus).',
+                    reason: 'Липсват напълно развити узрели плодове.'
+                },
+                sources: 'Българска флора.'
+            },
+            {
+                id: 'quercus-5513',
+                code: '019',
+                bgName: 'Дъб',
+                latinName: 'Quercus sp.',
+                family: 'Букови (Fagaceae)',
+                status: 'Дърво • Местен вид',
+                isToxic: false,
+                isNative: true,
+                image: 'IMG_5513.jpg',
+                recognition: {
+                    mainTraits: 'Масивно многостволно или вековно дърво с кожести наделени листа и широка корона.',
+                    onPhoto: 'Голямо вековно дърво в естествено местообитание.',
+                    doubles: 'Различни местни видове Quercus (цер, благун, летен/зимен дъб).'
+                },
+                benefits: {
+                    ecology: 'Ключов вид в българските гори; поддържа стотици видове насекоми и птици.',
+                    nectar: 'Вятърноопрашващ се вид.',
+                    soil: 'Жълъдите са жизненоважна храна за горските животни.'
+                },
+                risks: {
+                    toxicity: 'Жълъдите и шумата съдържат танини.',
+                    animals: 'При прекомерна паша на зелени жълъди от добитък е възможно затягане/отравяне.',
+                    safetyNotice: 'Няма пряк риск за хора.',
+                    invasiveness: 'Местен доминиращ вид.'
+                },
+                uses: {
+                    traditional: 'Дървесина, сянка, почвозащита.',
+                    history: 'Свещено дърво в много древни култури.',
+                    warning: '❌ Не консумирайте сурови жълъди без изваряване на танините.'
+                },
+                facts: [
+                    'Старите дъбове поддържат изключително високо биоразнообразие благодарение на хралупите и мъртвата дървесина.'
+                ],
+                accuracyNote: {
+                    confirmed: 'Род Quercus.',
+                    doubts: 'Точен вид.',
+                    reason: 'Снимката е на цялото дърво от разстояние без близък план на жълъд и лист.'
+                },
+                sources: 'Българска флора.'
+            },
+            {
+                id: 'nerium-5520',
+                code: '020',
+                bgName: 'Обикновен олеандър (Закум)',
+                latinName: 'Nerium oleander',
+                family: 'Закумови (Apocynaceae)',
+                status: 'Храст • СИЛНО ОТРОВЕН • Декоративен',
+                isToxic: true,
+                isNative: false,
+                image: 'IMG_5520.jpg',
+                recognition: {
+                    mainTraits: 'Голям вечнозелен храст с тесни кожести ланцетни листа и ярки розови/бели петделни цветове.',
+                    onPhoto: 'Обилно цъфтящ розов олеандър.',
+                    doubles: 'Декоративни сортове олеандър.'
+                },
+                benefits: {
+                    ecology: 'Отглежда се за озеленяване в по-топлите региони.',
+                    nectar: 'Цветовете привличат насекоми.',
+                    soil: 'Устойчив на суша и замърсен въздух.'
+                },
+                risks: {
+                    toxicity: '⚠️ ВСИЧКИ ЧАСТИ СА СИЛНО ОТРОВНИ (олеандрин, олеандригенин).',
+                    animals: 'Смъртоносно токсичен за хора, кучета, котки, коне и добитък.',
+                    safetyNotice: 'Дори пушекът от изгарянето на клоните му е отровен!',
+                    invasiveness: 'Предимно градински/саксиен вид у нас.'
+                },
+                uses: {
+                    traditional: 'Само декоративна употреба.',
+                    history: 'Традиционен храст по Средиземноморието.',
+                    warning: '❌ Никога не използвайте клонки от закум за шишове за готвене!'
+                },
+                facts: [
+                    'Олеандърът съдържа сърдечни гликозиди, които могат да предизвикат спиране на сърцето дори при малки количества.'
+                ],
+                accuracyNote: {
+                    confirmed: 'Nerium oleander.',
+                    doubts: 'Няма.',
+                    reason: 'Ясно разпознаваем вид.'
+                },
+                sources: 'ASPCA; Toxicology references.'
+            },
+            {
+                id: 'phillyrea-5511',
+                code: '021',
+                bgName: 'Филирея (вероятно)',
+                latinName: 'Phillyrea latifolia, вероятно',
+                family: 'Маслинови (Oleaceae)',
+                status: 'Вечнозелен храст • Местен вид',
+                isToxic: false,
+                isNative: true,
+                image: 'IMG_5511.jpg',
+                recognition: {
+                    mainTraits: 'Вечнозелен храст или дърво с кожести елиптични листа и малки зелени топчести плодове.',
+                    onPhoto: 'Клон с тъмнозелени кожести листа и зелени плодчета.',
+                    doubles: 'Лавровишня, смрика (Myrtus), маслина.'
+                },
+                benefits: {
+                    ecology: 'Разпространен в средиземноморски и южни храсталачни съобщества в България.',
+                    nectar: 'Осигурява укритие за птици.',
+                    soil: 'Пази почвите от ерозия в сухи райони.'
+                },
+                risks: {
+                    toxicity: 'Няма данни за силна токсичност.',
+                    animals: 'Плодовете се ядат от птици.',
+                    safetyNotice: 'Не консумирайте плодовете.',
+                    invasiveness: 'Местен южен вид.'
+                },
+                uses: {
+                    traditional: 'Декоративен храст за сухолюбиви градини.',
+                    history: 'Средиземноморски фригана и макис.',
+                    warning: '❌ Не използвайте за храна.'
+                },
+                facts: [
+                    'Филиреята е близък роднина на маслината, ясена и люляка.'
+                ],
+                accuracyNote: {
+                    confirmed: 'Семейство Oleaceae.',
+                    doubts: 'Вероятна Phillyrea latifolia.',
+                    reason: 'Липсват близки кадри на цветовете.'
+                },
+                sources: 'Българска флора.'
+            },
+            {
+                id: 'ruscus-5536',
+                code: '022',
+                bgName: 'Бодлив залист',
+                latinName: 'Ruscus aculeatus, вероятно',
+                family: 'Зайчасянкови (Asparagaceae)',
+                status: 'Вечнозелен полухраст • Защитен вид',
+                isToxic: false,
+                isNative: true,
+                image: 'IMG_5536.jpg',
+                recognition: {
+                    mainTraits: 'Твърди, тъмнозелени, бодливи „листоподобни“ филокладии с червени плодчета в центъра им.',
+                    onPhoto: 'Вечнозелено растение в горския подлес.',
+                    doubles: 'Ruscus hypoglossum (подезичен залист).'
+                },
+                benefits: {
+                    ecology: 'Расте в сенчести гори и подлеси.',
+                    nectar: 'Дава целогодишно укритие за дребни животни.',
+                    soil: 'Защитен растителен вид в България.'
+                },
+                risks: {
+                    toxicity: 'Плодовете могат да причинят стомашно разстройство.',
+                    animals: 'Острите върхове бодат.',
+                    safetyNotice: 'Не берете диворастящи екземпляри.',
+                    invasiveness: 'Местен редък вид.'
+                },
+                uses: {
+                    traditional: 'Екстракти от Ruscus се използват във фармацията при венозна недостатъчност.',
+                    history: 'Използван за декорация и букети.',
+                    warning: '❌ Не събирайте от дивата природа.'
+                },
+                facts: [
+                    '„Листата“ на бодливия залист са всъщност видоизменени плоски стъбла, наречени кладодии или филокладии.'
+                ],
+                accuracyNote: {
+                    confirmed: 'Род Ruscus.',
+                    doubts: 'R. aculeatus или R. hypoglossum.',
+                    reason: 'Не се вижда ясно червеният плод и бодливостта на върха.'
+                },
+                sources: 'Червена книга; Фармакогнозия.'
+            },
+            {
+                id: 'bougainvillea-5547',
+                code: '023',
+                bgName: 'Бугенвилея',
+                latinName: 'Bougainvillea sp.',
+                family: 'Вечерникови (Nyctaginaceae)',
+                status: 'Декоративно тропическо растение',
+                isToxic: false,
+                isNative: false,
+                image: 'IMG_5547.jpg',
+                recognition: {
+                    mainTraits: 'Яркомагентени или розови хартиени прицветници, обгръщащи малки бели тръбести цветове.',
+                    onPhoto: 'Пищно цъфтящи пурпурни прицветници.',
+                    doubles: 'Различни градински сортове Bougainvillea.'
+                },
+                benefits: {
+                    ecology: 'Отглежда се като декоративен лиан или саксийно растение.',
+                    nectar: 'Привлича пеперуди и насекоми.',
+                    soil: 'Предпочита слънчеви и топли места.'
+                },
+                risks: {
+                    toxicity: 'Сокът от клонките може да предизвика лек кожен дерматит.',
+                    animals: 'Клонките имат остри шипове.',
+                    safetyNotice: 'Внимавайте при подрязване.',
+                    invasiveness: 'Не издържа на българските зимни студове вън.'
+                },
+                uses: {
+                    traditional: 'Украса за фасади, арки и балкони.',
+                    history: 'Произхожда от Южна Америка.',
+                    warning: '❌ Внимавайте с шиповете по стъблото.'
+                },
+                facts: [
+                    'Ярките оцветени части не са венчелистчета, а видоизменени листа (прицветници).'
+                ],
+                accuracyNote: {
+                    confirmed: 'Род Bougainvillea.',
+                    doubts: 'Конкретен сорт/хибрид.',
+                    reason: 'Градински хибрид.'
+                },
+                sources: 'Botanical encyclopedias.'
+            },
+            {
+                id: 'lonicera-5550',
+                code: '024',
+                bgName: 'Орлови нокти (вероятно)',
+                latinName: 'Lonicera sp.',
+                family: 'Каприфолиеви (Caprifoliaceae)',
+                status: 'Храст • Потенциално токсичен',
+                isToxic: true,
+                isNative: true,
+                image: 'IMG_5550.jpg',
+                recognition: {
+                    mainTraits: 'Срещуположни елиптични листа и яркочервени или алени топчести плодове по двойки.',
+                    onPhoto: 'Храст с яркочервени сочни плодчета.',
+                    doubles: 'Symphoricarpos, Viburnum, Cotoneaster.'
+                },
+                benefits: {
+                    ecology: 'Цветовете са ароматични и богати на нектар.',
+                    nectar: 'Привличат нощни пеперуди и пчели.',
+                    soil: 'Плодовете се консумират от някои видове птици.'
+                },
+                risks: {
+                    toxicity: '⚠️ Червените плодове на много видове Lonicera са ТОКСИЧНИ за хора!',
+                    animals: 'Предизвикват гадене, повръщане и диария при поглъщане.',
+                    safetyNotice: 'Не яжте червени горски плодове по двойки.',
+                    invasiveness: 'Някои чужди видове са инвазивни, местните са балансирани.'
+                },
+                uses: {
+                    traditional: 'Декоративни храсти и катерливи лиани.',
+                    history: 'Популярни в градинарството.',
+                    warning: '❌ Плодовете са отровни за хора!'
+                },
+                facts: [
+                    'Листата на орловите нокти винаги са разположени строго срещуположно по дължината на клонките.'
+                ],
+                accuracyNote: {
+                    confirmed: 'Род Lonicera.',
+                    doubts: 'Точен вид (L. xylosteum или друг).',
+                    reason: 'Нужна е снимка на цветовете.'
+                },
+                sources: 'Българска флора; Poisonous Plants Guides.'
+            },
+            {
+                id: 'sempervivum-5633',
+                code: '025',
+                bgName: 'Покривна тлъстига (Дебелец)',
+                latinName: 'Sempervivum sp., вероятно Sempervivum tectorum',
+                family: 'Дебелецови (Crassulaceae)',
+                status: 'Сукулент • Местен вид',
+                isToxic: false,
+                isNative: true,
+                image: 'IMG_5633.jpg',
+                recognition: {
+                    mainTraits: 'Месесто червеникаво цъфтящо стъбло с розетка от дебели сочни листа и звездчати розови цветове.',
+                    onPhoto: 'Цъфтяща розетка от сукулентни листа.',
+                    doubles: 'Jovibarba и други видове Sempervivum.'
+                },
+                benefits: {
+                    ecology: 'Расте по сухи каменисти скали, покриви и алпинеуми.',
+                    nectar: 'Цветовете са богато посещавани от пчели.',
+                    soil: 'Задържа почвата върху стръмни скали.'
+                },
+                risks: {
+                    toxicity: 'Не е отровно.',
+                    animals: 'Безопасен сукулент.',
+                    safetyNotice: 'Не заменяйте медицински грижи с домашни сокове.',
+                    invasiveness: 'Местен вид.'
+                },
+                uses: {
+                    traditional: 'Сокът от листата традиционно се прилага при болки в ушите и кожни изгаряния.',
+                    history: 'Засаждан по покривите за защита от мълнии според суеверия.',
+                    warning: '❌ Не капвайте сокове в ухото при спукано тъпанче!'
+                },
+                facts: [
+                    'Името Sempervivum означава „винаги жив“ заради способността му да оцелява при екстремна суша.'
+                ],
+                accuracyNote: {
+                    confirmed: 'Род Sempervivum.',
+                    doubts: 'Точен вид.',
+                    reason: 'Многобройни скални вариации.'
+                },
+                sources: 'Българска флора.'
+            },
+            {
+                id: 'pyracantha-5736',
+                code: '026',
+                bgName: 'Огнен трън',
+                latinName: 'Pyracantha coccinea',
+                family: 'Розоцветни (Rosaceae)',
+                status: 'Декоративен бодлив храст',
+                isToxic: false,
+                isNative: false,
+                image: 'IMG_5736.jpg',
+                recognition: {
+                    mainTraits: 'Гъсти гроздове от дребни оранжево-червени плодчета по бодливи вечнозелени клони.',
+                    onPhoto: 'Яркооранжеви плодове, обсипали храста.',
+                    doubles: 'Cotoneaster (котонеастер), Sorbus (офика).'
+                },
+                benefits: {
+                    ecology: 'Отглежда се за живи плетове.',
+                    nectar: 'Цветовете се опрашват от пчели.',
+                    soil: 'Плодовете са ключова храна за птиците през зимата.'
+                },
+                risks: {
+                    toxicity: 'Плодовете не са отровни, но съдържат следи от цианогенни гликозиди и са сурови и невкусни.',
+                    animals: 'Острите бодли могат да наранят.',
+                    safetyNotice: 'Може да причини леко стомашно разстройство при поглъщане от деца.',
+                    invasiveness: 'Декоративно отглеждан.'
+                },
+                uses: {
+                    traditional: 'Непревземаеми бодливи живи плетове.',
+                    history: 'Популярно градско озеленяване.',
+                    warning: '❌ Внимавайте с острите бодли.'
+                },
+                facts: [
+                    'Латинското наименование Pyracantha се превежда буквално като „огнен бодил“.'
+                ],
+                accuracyNote: {
+                    confirmed: 'Pyracantha coccinea.',
+                    doubts: 'Няма.',
+                    reason: 'Характерни оранжеви плодове и бодлив храст.'
+                },
+                sources: 'Паркова флора.'
+            },
+            {
+                id: 'epilobium-5641',
+                code: '027',
+                bgName: 'Теснолистна върбовка (Масив)',
+                latinName: 'Epilobium angustifolium',
+                family: 'Върбовкови (Onagraceae)',
+                status: 'Многогодишно • Местен вид',
+                isToxic: false,
+                isNative: true,
+                image: 'IMG_5641.jpg',
+                recognition: {
+                    mainTraits: 'Масивна популация от високи растения с тесни листа и розови съцветия.',
+                    onPhoto: 'Голямо находище от цъфтяща теснолистна върбовка край гора.',
+                    doubles: 'Други видове Epilobium.'
+                },
+                benefits: {
+                    ecology: 'Медоносно растение, възстановяващо почвата след сечи.',
+                    nectar: 'Отличен източник на свеж нектар.',
+                    soil: 'Спира ерозията на нарушени терени.'
+                },
+                risks: {
+                    toxicity: 'Не е отровна.',
+                    animals: 'Паша от диви животни.',
+                    safetyNotice: 'Няма специфични рискове.',
+                    invasiveness: 'Местен пионерен вид.'
+                },
+                uses: {
+                    traditional: 'Традиционен „Иван-чай“ в източноевропейската култура.',
+                    history: 'Използвана за ферментирал чай.',
+                    warning: '❌ Не заменя медицинско лечение.'
+                },
+                facts: [
+                    'Леките семена с пухкави власинки могат да летят на десетки километри с вятъра.'
+                ],
+                accuracyNote: {
+                    confirmed: 'Epilobium angustifolium.',
+                    doubts: 'Няма.',
+                    reason: 'Ясно находище от вида.'
+                },
+                sources: 'Българска флора.'
+            },
+            {
+                id: 'echium-5759',
+                code: '028',
+                bgName: 'Обикновена синя усойница (вероятно)',
+                latinName: 'Echium vulgare, вероятно',
+                family: 'Грапаволистни (Boraginaceae)',
+                status: 'Двегодишно • Потенциално токсично',
+                isToxic: true,
+                isNative: true,
+                image: 'IMG_5759.jpg',
+                recognition: {
+                    mainTraits: 'Изправено, грубовлакнесто стъбло с дребни синьо-виолетови фуниевидни цветове и червени пъпки.',
+                    onPhoto: 'Грубо четинесто стъбло със яркосини цветове.',
+                    doubles: 'Echium italicum, Anchusa.'
+                },
+                benefits: {
+                    ecology: 'Среща се по сухи тревисти места и крайпътища.',
+                    nectar: 'Изключително богато на нектар, любимо на пчелите.',
+                    soil: 'Устойчиво на суша.'
+                },
+                risks: {
+                    toxicity: '⚠️ Съдържа пиролизидинови алкалоиди — опасни за черния дроб!',
+                    animals: 'Твърдите четинки дразнят кожата.',
+                    safetyNotice: 'Не приемайте вътрешно.',
+                    invasiveness: 'Местен вид.'
+                },
+                uses: {
+                    traditional: 'Медоносно растение.',
+                    history: 'Старинни приложения срещу укус от змии (поради формата на близалцето).',
+                    warning: '❌ Опасност от токсичност за черния дроб!'
+                },
+                facts: [
+                    'Цветовите пъпки първоначално са розови, а след разтварянето стават ярко сини.'
+                ],
+                accuracyNote: {
+                    confirmed: 'Род Echium.',
+                    doubts: 'Точен вид (Echium vulgare).',
+                    reason: 'Близък план на цветовете.'
+                },
+                sources: 'Българска флора; EMA Safety reports.'
+            },
+            {
+                id: 'silene-vulgaris-new1',
+                code: '029',
+                bgName: 'Обикновено плюскавиче',
+                latinName: 'Silene vulgaris',
+                family: 'Карамфилови (Caryophyllaceae)',
+                status: 'Многогодишно • Местен вид',
+                isToxic: false,
+                isNative: true,
+                image: 'Обикновено плюскавиче_2.jpg',
+                recognition: {
+                    mainTraits: 'Надута, мехурчеста чашка на цвета с видима мрежовидна жилкуваност, бели дълбоко двуделни венчелистчета.',
+                    onPhoto: 'Ясно се вижда характерната издута чашка, която прилича на малко мехурче или камбанка.',
+                    doubles: 'Други видове плюскавиче (Silene), но S. vulgaris има най-изразената мехурчеста гола чашка.'
+                },
+                benefits: {
+                    ecology: 'Широко разпространено по ливади, сухи тревисти места и край пътища.',
+                    nectar: 'Опрашва се предимно от нощни пеперуди, които са привлечени от аромата, отделян вечер.',
+                    soil: 'Издръжливо на засушаване и бедни почви.'
+                },
+                risks: {
+                    toxicity: 'Не е отровно. Младите листа са ядливи.',
+                    animals: 'Безопасно за животни.',
+                    safetyNotice: 'Няма съществени рискове.',
+                    invasiveness: 'Местен вид.'
+                },
+                uses: {
+                    traditional: 'Младите клонки и листа в някои страни се берат преди цъфтеж и се използват в салати, омлети и супи (напр. в Италия като "stridolo").',
+                    history: 'Познато от древността като дива храна.',
+                    warning: '❌ Не събирайте растения от замърсени крайпътни райони.'
+                },
+                facts: [
+                    'Децата често обичат да "пукат" издутите чашки на цвета, откъдето идва и българското му име - плюскавиче.'
+                ],
+                accuracyNote: {
+                    confirmed: 'Silene vulgaris',
+                    doubts: 'Няма.',
+                    reason: 'Силно характерна надута чашка.'
+                },
+                sources: 'Българска флора.'
+            },
+            {
+                id: 'passiflora-caerulea-new2',
+                code: '030',
+                bgName: 'Синя пасифлора',
+                latinName: 'Passiflora caerulea',
+                family: 'Страстоцветни (Passifloraceae)',
+                status: 'Декоративна лиана',
+                isToxic: false,
+                isNative: false,
+                image: 'Синя пасифлора_2.jpg',
+                recognition: {
+                    mainTraits: 'Екзотичен, сложен цвят с венче от синьо-бели нишки (корона), пет тичинки и три близалца. Дълбоко наделени, петделни листа.',
+                    onPhoto: 'Сложен и изключително характерен цвят, типичен за пасифлората.',
+                    doubles: 'Други сортове и видове пасифлора (напр. Passiflora incarnata).'
+                },
+                benefits: {
+                    ecology: 'Декоративна лиана, отглеждана в дворове и на балкони.',
+                    nectar: 'Привлича пчели и други опрашители.',
+                    soil: 'Расте бързо при наличие на влага и топлина.'
+                },
+                risks: {
+                    toxicity: 'Плодовете са ядливи, но неузрелите плодове и вегетативните части могат да съдържат цианогенни гликозиди.',
+                    animals: 'Може да предизвика стомашни разстройства при домашни любимци, ако ядат листата.',
+                    safetyNotice: 'Не консумирайте зелени (неузрели) плодове.',
+                    invasiveness: 'Декоративно отглеждан вид, не издържа сурови зими на открито навсякъде у нас.'
+                },
+                uses: {
+                    traditional: 'Близкородствената P. incarnata се ползва като успокоително, но P. caerulea има по-слаб ефект и се отглежда предимно за красота.',
+                    history: 'Името "страстоцвет" идва от испанските мисионери, които виждали в структурата на цвета символи на Христовото разпятие.',
+                    warning: '❌ Не правете домашни отвари от листата без сигурна идентификация на вида.'
+                },
+                facts: [
+                    'Има специални жлези по дръжките на листата (екстрафлорални нектарници), които привличат мравки – те от своя страна пазят растението от вредители.'
+                ],
+                accuracyNote: {
+                    confirmed: 'Passiflora caerulea',
+                    doubts: 'Възможен хибрид.',
+                    reason: 'Много популярен градински вид със синя корона.'
+                },
+                sources: 'Botanical databases.'
+            },
+            {
+                id: 'verbascum-new3',
+                code: '031',
+                bgName: 'Дребноцветен лопен',
+                latinName: 'Verbascum sp. / Verbascum thapsus',
+                family: 'Живеничеви (Scrophulariaceae)',
+                status: 'Двегодишно • Местен вид',
+                isToxic: false,
+                isNative: true,
+                image: 'Дребноцветен лопен_2.jpg',
+                recognition: {
+                    mainTraits: 'Високо изправено стъбло, гъсто покрито със сивкави власинки, образуващо дълго класовидно съцветие с жълти, петделни цветове.',
+                    onPhoto: 'Снимката показва високото съцветие с дребни жълти цветчета и мъхести пъпки.',
+                    doubles: 'Различни видове лопен (Verbascum thapsus, V. phlomoides, V. densiflorum).'
+                },
+                benefits: {
+                    ecology: 'Расте по сухи, песъчливи, каменисти и рудерални места.',
+                    nectar: 'Осигурява прашец и нектар за много видове пчели, включително диви.',
+                    soil: 'Пионерен вид, който се появява на нарушени терени.'
+                },
+                risks: {
+                    toxicity: 'Семената съдържат ротенон и са леко токсични (ползвани са в миналото за зашеметяване на риба).',
+                    animals: 'Гъстите власинки предпазват растението от изпасване от добитъка.',
+                    safetyNotice: 'Власинките могат да раздразнят кожата или гърлото, ако чаят не се прецеди през фина цедка.',
+                    invasiveness: 'Местен вид.'
+                },
+                uses: {
+                    traditional: 'Цветовете традиционно се използват за чай при кашлица и бронхит (действат омекчаващо и отхрачващо).',
+                    history: 'Изсушените стъбла са били потапян в лой и използвани като факли в древността.',
+                    warning: '❌ Задължително прецеждайте чая от лопен през хартиена цедка или много фина марля, за да премахнете дразнещите власинки!'
+                },
+                facts: [
+                    'През първата година лопенът образува само листна розетка на земята, а през втората година изпраща високото си стъбло, цъфти и умира.'
+                ],
+                accuracyNote: {
+                    confirmed: 'Род Verbascum.',
+                    doubts: 'Точният вид лопен.',
+                    reason: 'Нужен е детайлен преглед на тичинките и листата за точно видово определяне.'
+                },
+                sources: 'Българска флора, Фитотерапия.'
+            },
+            {
+                id: 'vinca-minor-new4',
+                code: '032',
+                bgName: 'Малък зимзелен',
+                latinName: 'Vinca minor',
+                family: 'Закумови (Apocynaceae)',
+                status: 'Вечнозелен полухраст • Токсичен',
+                isToxic: true,
+                isNative: true,
+                image: 'Малък зимзелен_2.jpg',
+                recognition: {
+                    mainTraits: 'Стелещо се вечнозелено растение с блестящи, кожести, елипсовидни листа. Цветовете са светлосини до виолетови, с пет асиметрични (като перка) венчелистчета.',
+                    onPhoto: 'Характерните виолетово-сини цветове и лъскави срещуположни листенца.',
+                    doubles: 'Голям зимзелен (Vinca major), който има по-едри и по-широки (сърцевидни) листа.'
+                },
+                benefits: {
+                    ecology: 'Образува плътен килим в сенчести гори и паркове, предпазвайки почвата.',
+                    nectar: 'Цъфти рано напролет и предоставя нектар.',
+                    soil: 'Отлично почвопокривно растение за сенчести и сухи места.'
+                },
+                risks: {
+                    toxicity: '⚠️ Отровно! Съдържа индолни алкалоиди (напр. винкамин), които влияят на кръвообращението и нервната система.',
+                    animals: 'Опасно за кучета, котки и коне при поглъщане.',
+                    safetyNotice: 'Не приемайте вътрешно без рецепта и лекарски контрол.',
+                    invasiveness: 'Може да се разрасне агресивно в градините.'
+                },
+                uses: {
+                    traditional: 'Извличат се алкалоиди за лекарства (например за подобряване на мозъчното кръвообращение).',
+                    history: 'В миналото се е вплитал във венци за сватби и погребения заради вечнозелените си листа (символ на безсмъртието).',
+                    warning: '❌ Домашните настойки и чайове са рискови поради токсичността на алкалоидите.'
+                },
+                facts: [
+                    'Специфичният нюанс на синьото на цветовете на това растение е дал името на цвята "periwinkle" (зимензелено синьо) в английския език.'
+                ],
+                accuracyNote: {
+                    confirmed: 'Vinca minor.',
+                    doubts: 'Няма.',
+                    reason: 'Ясно разпознаваем хабитус и размер спрямо Vinca major.'
+                },
+                sources: 'Българска флора, Фармакогнозия.'
+            }
+        ];
+
+        let currentPlantIndex = 0;
+        let activeTab = 'recognition';
+        let bookmarkedPlantIds = new Set();
+        let currentFilter = 'all';
+
+        window.onload = function() {
+            if (window.lucide) {
+                lucide.createIcons();
+            }
+            renderPlantList();
+            displayCurrentPlant();
+        };
+
+        // Render Sidebar List
+        function renderPlantList() {
+            const listEl = document.getElementById('plantList');
+            if (!listEl) return;
+            listEl.innerHTML = '';
+
+            const filtered = plantDatabase.filter(p => {
+                if (currentFilter === 'toxic') return p.isToxic;
+                if (currentFilter === 'native') return p.isNative;
+                return true;
+            });
+
+            const countBadge = document.getElementById('plantCountBadge');
+            if (countBadge) countBadge.innerText = filtered.length;
+
+            filtered.forEach((plant) => {
+                const originalIndex = plantDatabase.findIndex(item => item.id === plant.id);
+                const isActive = originalIndex === currentPlantIndex;
+
+                const card = document.createElement('div');
+                card.className = `p-3 rounded-xl cursor-pointer border transition-all flex items-center justify-between gap-3 ${
+                    isActive 
+                        ? 'bg-botanical-100 dark:bg-botanical-900/60 border-botanical-400 dark:border-botanical-600 shadow-sm' 
+                        : 'bg-paper-card dark:bg-paper-cardDark border-paper-border dark:border-paper-borderDark hover:border-botanical-300'
+                }`;
+                card.onclick = () => selectPlant(originalIndex);
+
+                card.innerHTML = `
+                    <div class="flex items-center space-x-3 overflow-hidden">
+                        <div class="w-10 h-10 rounded-lg overflow-hidden flex-shrink-0 bg-slate-200 text-[10px] font-mono flex items-center justify-center text-slate-500 font-bold border border-slate-300">
+                            <img src="${plant.image}" class="w-full h-full object-cover" onerror="this.style.display='none'">
+                            <span class="p-1 text-center">${plant.code}</span>
+                        </div>
+                        <div class="truncate">
+                            <h4 class="font-serif font-bold text-sm text-slate-900 dark:text-slate-100 truncate">${plant.bgName}</h4>
+                            <p class="text-[11px] italic text-slate-500 truncate">${plant.latinName}</p>
+                        </div>
+                    </div>
+                    ${plant.isToxic ? '<span title="Потенциално рисково" class="text-xs text-amber-500 bg-amber-50 dark:bg-amber-950/50 p-1 rounded-md flex-shrink-0">⚠️</span>' : ''}
+                `;
+
+                listEl.appendChild(card);
+            });
+        }
+
+        // Display current plant on book pages
+        function displayCurrentPlant() {
+            const plant = plantDatabase[currentPlantIndex];
+            if (!plant) return;
+
+            document.getElementById('pageIndicator').innerText = `Страница ${currentPlantIndex + 1} от ${plantDatabase.length}`;
+            
+            document.getElementById('plantCode').innerText = plant.code || '001';
+            document.getElementById('plantBgName').innerText = plant.bgName;
+            document.getElementById('plantLatinName').innerText = plant.latinName;
+            document.getElementById('plantFamily').innerText = plant.family;
+            document.getElementById('plantStatus').innerText = plant.status;
+            
+            const imgEl = document.getElementById('plantImage');
+            const fallbackEl = document.getElementById('imageFallback');
+            const fallbackFilenameEl = document.getElementById('imageFallbackFilename');
+            
+            const safeImagePath = encodeURI(plant.image);
+            imgEl.src = safeImagePath;
+            imgEl.classList.remove('hidden');
+            fallbackEl.classList.add('hidden');
+            if (fallbackFilenameEl) fallbackFilenameEl.innerText = `Файл: ${plant.image}`;
+
+            document.getElementById('modalImage').src = safeImagePath;
+            document.getElementById('modalCaption').innerText = `${plant.bgName} (${plant.latinName}) — ${plant.image}`;
+
+            document.getElementById('plantSources').innerText = plant.sources;
+
+            const bookmarkBtn = document.getElementById('bookmarkBtn');
+            if (bookmarkedPlantIds.has(plant.id)) {
+                bookmarkBtn.classList.add('text-amber-500');
+                bookmarkBtn.classList.remove('text-slate-600');
+            } else {
+                bookmarkBtn.classList.remove('text-amber-500');
+                bookmarkBtn.classList.add('text-slate-600');
+            }
+
+            document.getElementById('accuracyContent').innerHTML = `
+                <p><strong>Потвърдено:</strong> ${plant.accuracyNote.confirmed}</p>
+                <p><strong>В какво има съмнение:</strong> ${plant.accuracyNote.doubts}</p>
+                <p><strong>Причина:</strong> ${plant.accuracyNote.reason}</p>
+            `;
+
+            renderTabContent();
+            renderPlantList();
+            if (window.lucide) lucide.createIcons();
+        }
+
+        function switchTab(tabKey) {
+            activeTab = tabKey;
+            
+            ['recognition', 'benefits', 'risks', 'uses', 'facts'].forEach(key => {
+                const btn = document.getElementById(`tab-${key}`);
+                if (btn) {
+                    if (key === tabKey) {
+                        btn.className = "tab-btn active px-3.5 py-2 transition-colors rounded-xl whitespace-nowrap flex items-center gap-1.5";
+                    } else {
+                        btn.className = "tab-btn px-3.5 py-2 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 font-medium transition-colors rounded-xl whitespace-nowrap flex items-center gap-1.5";
+                    }
+                }
+            });
+
+            renderTabContent();
+            if (window.lucide) lucide.createIcons();
+        }
+
+        function renderTabContent() {
+            const plant = plantDatabase[currentPlantIndex];
+            const contentArea = document.getElementById('tabContentArea');
+
+            if (activeTab === 'recognition') {
+                contentArea.innerHTML = `
+                    <div class="space-y-3.5">
+                        <div class="p-4 bg-paper-card dark:bg-paper-cardDark rounded-xl border border-paper-border dark:border-paper-borderDark">
+                            <h4 class="font-serif font-bold text-base text-botanical-800 dark:text-botanical-200 mb-1.5 flex items-center gap-2">
+                                <i data-lucide="sparkles" class="w-4 h-4 text-botanical-600"></i> Основни белези
+                            </h4>
+                            <p class="text-sm text-slate-800 dark:text-slate-200 leading-relaxed font-normal">${plant.recognition.mainTraits}</p>
+                        </div>
+                        <div class="p-4 bg-paper-card dark:bg-paper-cardDark rounded-xl border border-paper-border dark:border-paper-borderDark">
+                            <h4 class="font-serif font-bold text-base text-botanical-800 dark:text-botanical-200 mb-1.5 flex items-center gap-2">
+                                <i data-lucide="camera" class="w-4 h-4 text-botanical-600"></i> На снимката (${plant.image})
+                            </h4>
+                            <p class="text-sm text-slate-800 dark:text-slate-200 leading-relaxed font-normal">${plant.recognition.onPhoto}</p>
+                        </div>
+                        <div class="p-4 bg-amber-50/70 dark:bg-amber-950/30 rounded-xl border border-amber-200 dark:border-amber-900/50">
+                            <h4 class="font-serif font-bold text-base text-amber-900 dark:text-amber-200 mb-1.5 flex items-center gap-2">
+                                <i data-lucide="copy" class="w-4 h-4 text-amber-600 dark:text-amber-400"></i> Възможни двойници
+                            </h4>
+                            <p class="text-sm text-amber-950 dark:text-amber-200 leading-relaxed font-medium">${plant.recognition.doubles}</p>
+                        </div>
+                    </div>
+                `;
+            } else if (activeTab === 'benefits') {
+                contentArea.innerHTML = `
+                    <div class="space-y-3.5">
+                        <div class="p-4 bg-paper-card dark:bg-paper-cardDark rounded-xl border border-paper-border dark:border-paper-borderDark">
+                            <h4 class="font-serif font-bold text-base text-botanical-800 dark:text-botanical-200 mb-1.5 flex items-center gap-2">
+                                <i data-lucide="map-pin" class="w-4 h-4 text-botanical-600"></i> Местообитание
+                            </h4>
+                            <p class="text-sm text-slate-800 dark:text-slate-200 leading-relaxed">${plant.benefits.ecology}</p>
+                        </div>
+                        <div class="p-4 bg-paper-card dark:bg-paper-cardDark rounded-xl border border-paper-border dark:border-paper-borderDark">
+                            <h4 class="font-serif font-bold text-base text-botanical-800 dark:text-botanical-200 mb-1.5 flex items-center gap-2">
+                                <i data-lucide="flower" class="w-4 h-4 text-botanical-600"></i> Екологична роля & Нектар
+                            </h4>
+                            <p class="text-sm text-slate-800 dark:text-slate-200 leading-relaxed">${plant.benefits.nectar}</p>
+                        </div>
+                        <div class="p-4 bg-paper-card dark:bg-paper-cardDark rounded-xl border border-paper-border dark:border-paper-borderDark">
+                            <h4 class="font-serif font-bold text-base text-botanical-800 dark:text-botanical-200 mb-1.5 flex items-center gap-2">
+                                <i data-lucide="layers" class="w-4 h-4 text-botanical-600"></i> Почвена и екосистемна роля
+                            </h4>
+                            <p class="text-sm text-slate-800 dark:text-slate-200 leading-relaxed">${plant.benefits.soil}</p>
+                        </div>
+                    </div>
+                `;
+            } else if (activeTab === 'risks') {
+                contentArea.innerHTML = `
+                    <div class="space-y-3.5">
+                        <div class="p-4 bg-rose-50/80 dark:bg-rose-950/40 rounded-xl border border-rose-200 dark:border-rose-900/60">
+                            <h4 class="font-serif font-bold text-base text-rose-900 dark:text-rose-200 mb-1.5 flex items-center gap-2">
+                                <i data-lucide="skull" class="w-4 h-4 text-rose-600"></i> Токсичност & Химичен състав
+                            </h4>
+                            <p class="text-sm text-rose-950 dark:text-rose-100 leading-relaxed font-medium">${plant.risks.toxicity}</p>
+                            <p class="text-sm text-rose-800 dark:text-rose-300 mt-2 leading-relaxed">${plant.risks.animals}</p>
+                        </div>
+
+                        <div class="p-4 bg-amber-50/80 dark:bg-amber-950/40 rounded-xl border border-amber-200 dark:border-amber-900/60">
+                            <h4 class="font-serif font-bold text-base text-amber-900 dark:text-amber-200 mb-1.5 flex items-center gap-2">
+                                <i data-lucide="alert-circle" class="w-4 h-4 text-amber-600"></i> Предупреждение за безопасност
+                            </h4>
+                            <p class="text-sm text-amber-950 dark:text-amber-100 leading-relaxed font-medium">${plant.risks.safetyNotice}</p>
+                        </div>
+
+                        <div class="p-4 bg-paper-card dark:bg-paper-cardDark rounded-xl border border-paper-border dark:border-paper-borderDark">
+                            <h4 class="font-serif font-bold text-base text-slate-800 dark:text-slate-200 mb-1.5 flex items-center gap-2">
+                                <i data-lucide="globe" class="w-4 h-4 text-slate-500"></i> Статус & Инвазивност
+                            </h4>
+                            <p class="text-sm text-slate-800 dark:text-slate-200 leading-relaxed">${plant.risks.invasiveness}</p>
+                        </div>
+                    </div>
+                `;
+            } else if (activeTab === 'uses') {
+                contentArea.innerHTML = `
+                    <div class="space-y-3.5">
+                        <div class="p-4 bg-paper-card dark:bg-paper-cardDark rounded-xl border border-paper-border dark:border-paper-borderDark">
+                            <h4 class="font-serif font-bold text-base text-botanical-800 dark:text-botanical-200 mb-1.5 flex items-center gap-2">
+                                <i data-lucide="stethoscope" class="w-4 h-4 text-botanical-600"></i> Традиция & Фармация
+                            </h4>
+                            <p class="text-sm text-slate-800 dark:text-slate-200 leading-relaxed">${plant.uses.traditional}</p>
+                        </div>
+                        <div class="p-4 bg-paper-card dark:bg-paper-cardDark rounded-xl border border-paper-border dark:border-paper-borderDark">
+                            <h4 class="font-serif font-bold text-base text-botanical-800 dark:text-botanical-200 mb-1.5 flex items-center gap-2">
+                                <i data-lucide="palette" class="w-4 h-4 text-botanical-600"></i> Исторически и стопански употреби
+                            </h4>
+                            <p class="text-sm text-slate-800 dark:text-slate-200 leading-relaxed">${plant.uses.history}</p>
+                        </div>
+                        <div class="p-4 bg-rose-50/80 dark:bg-rose-950/40 rounded-xl border border-rose-200 dark:border-rose-900/50">
+                            <h4 class="font-serif font-bold text-base text-rose-900 dark:text-rose-200 mb-1.5 flex items-center gap-2">
+                                <i data-lucide="x-circle" class="w-4 h-4 text-rose-600"></i> Препоръка / Предупреждение
+                            </h4>
+                            <p class="text-sm text-rose-950 dark:text-rose-100 leading-relaxed font-semibold">${plant.uses.warning}</p>
+                        </div>
+                    </div>
+                `;
+            } else if (activeTab === 'facts') {
+                contentArea.innerHTML = `
+                    <div class="space-y-3.5">
+                        <div class="p-4 bg-botanical-50/80 dark:bg-botanical-950/60 rounded-xl border border-botanical-200 dark:border-botanical-800">
+                            <h4 class="font-serif font-bold text-base text-botanical-900 dark:text-botanical-100 mb-3 flex items-center gap-2">
+                                <i data-lucide="lightbulb" class="w-4 h-4 text-botanical-600"></i> Любопитни ботанически факти
+                            </h4>
+                            <ul class="space-y-2.5 text-sm text-botanical-950 dark:text-botanical-100 list-disc list-inside leading-relaxed">
+                                ${plant.facts.map(fact => `<li>${fact}</li>`).join('')}
+                            </ul>
+                        </div>
+                    </div>
+                `;
+            }
+        }
+
+        function selectPlant(index) {
+            currentPlantIndex = index;
+            displayCurrentPlant();
+        }
+
+        function prevPlant() {
+            if (currentPlantIndex > 0) {
+                currentPlantIndex--;
+                displayCurrentPlant();
+            }
+        }
+
+        function nextPlant() {
+            if (currentPlantIndex < plantDatabase.length - 1) {
+                currentPlantIndex++;
+                displayCurrentPlant();
+            }
+        }
+
+        function filterPlants(type) {
+            currentFilter = type;
+            renderPlantList();
+        }
+
+        function toggleBookmarkCurrent() {
+            const current = plantDatabase[currentPlantIndex];
+            if (bookmarkedPlantIds.has(current.id)) {
+                bookmarkedPlantIds.delete(current.id);
+            } else {
+                bookmarkedPlantIds.add(current.id);
+            }
+            displayCurrentPlant();
+        }
+
+        function handleImageError(img) {
+            img.classList.add('hidden');
+            document.getElementById('imageFallback').classList.remove('hidden');
+        }
+
+        function openImageModal() {
+            document.getElementById('imageModal').classList.remove('hidden');
+            document.getElementById('imageModal').classList.add('flex');
+        }
+
+        function closeImageModal() {
+            document.getElementById('imageModal').classList.add('hidden');
+            document.getElementById('imageModal').classList.remove('flex');
+        }
+
+        function toggleAccuracyNote() {
+            const modal = document.getElementById('accuracyModal');
+            modal.classList.toggle('hidden');
+            modal.classList.toggle('flex');
+        }
+
+        function toggleDarkMode() {
+            document.documentElement.classList.toggle('dark');
+        }
+
+        function toggleSearchModal() {
+            const modal = document.getElementById('searchModal');
+            modal.classList.toggle('hidden');
+            modal.classList.toggle('flex');
+            if (!modal.classList.contains('hidden')) {
+                document.getElementById('searchInput').focus();
+            }
+        }
+
+        function handleSearch() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            const resultsEl = document.getElementById('searchResults');
+            resultsEl.innerHTML = '';
+
+            if (!query.trim()) return;
+
+            const matches = plantDatabase.filter(p => 
+                p.bgName.toLowerCase().includes(query) ||
+                p.latinName.toLowerCase().includes(query) ||
+                p.family.toLowerCase().includes(query) ||
+                p.image.toLowerCase().includes(query) ||
+                p.recognition.mainTraits.toLowerCase().includes(query)
+            );
+
+            if (matches.length === 0) {
+                resultsEl.innerHTML = '<p class="p-2 text-slate-400">Няма намерени растения по тази дума.</p>';
+                return;
+            }
+
+            matches.forEach(plant => {
+                const idx = plantDatabase.findIndex(p => p.id === plant.id);
+                const item = document.createElement('div');
+                item.className = 'p-2 rounded-lg hover:bg-botanical-100 dark:hover:bg-botanical-900/50 cursor-pointer flex justify-between items-center';
+                item.onclick = () => {
+                    selectPlant(idx);
+                    toggleSearchModal();
+                };
+                item.innerHTML = `
+                    <div>
+                        <p class="font-bold text-slate-800 dark:text-slate-200">${plant.bgName}</p>
+                        <p class="text-[11px] italic text-slate-500">${plant.latinName} • <span class="font-mono">${plant.image}</span></p>
+                    </div>
+                    <span class="text-[10px] bg-botanical-200 dark:bg-botanical-800 text-botanical-900 dark:text-botanical-100 px-2 py-0.5 rounded font-mono">№ ${plant.code}</span>
+                `;
+                resultsEl.appendChild(item);
+            });
+        }
+
+        function openAddPlantModal() {
+            document.getElementById('addPlantModal').classList.remove('hidden');
+            document.getElementById('addPlantModal').classList.add('flex');
+        }
+
+        function closeAddPlantModal() {
+            document.getElementById('addPlantModal').classList.add('hidden');
+            document.getElementById('addPlantModal').classList.remove('flex');
+        }
+
+        function handleAddNewPlant(e) {
+            e.preventDefault();
+            const bgName = document.getElementById('newBgName').value;
+            const latinName = document.getElementById('newLatinName').value;
+            const family = document.getElementById('newFamily').value || 'Неустановено';
+            const status = document.getElementById('newStatus').value || 'Многогодишно';
+            const image = document.getElementById('newImageUrl').value || 'IMG_0000.jpg';
+            const recognitionText = document.getElementById('newRecognition').value || 'Няма въведено описание.';
+            const risksText = document.getElementById('newRisks').value || 'Липсва информация.';
+
+            const newPlant = {
+                id: 'plant-' + Date.now(),
+                code: String(plantDatabase.length + 1).padStart(3, '0'),
+                bgName: bgName,
+                latinName: latinName,
+                family: family,
+                status: status,
+                confidence: 'Потребителски фиш',
+                isToxic: false,
+                isNative: true,
+                image: image,
+                recognition: {
+                    mainTraits: recognitionText,
+                    onPhoto: 'Качена снимка от потребителя (' + image + ').',
+                    doubles: 'Не са посочени.'
+                },
+                benefits: {
+                    ecology: 'Добавено от потребителя.',
+                    nectar: 'Информацията предстои да се допълни.',
+                    soil: 'Липсват данни.'
+                },
+                risks: {
+                    toxicity: risksText,
+                    animals: 'Внимавайте при употреба.',
+                    safetyNotice: 'Консултирайте се със специалист преди употреба.',
+                    invasiveness: 'Неустановен статус.'
+                },
+                uses: {
+                    traditional: 'Липсват клинични данни.',
+                    history: 'Няма налична историческа справка.',
+                    warning: 'Не използвайте без сигурна идентификация.'
+                },
+                facts: ['Ново добавен образец в дигиталния хербарий.'],
+                accuracyNote: {
+                    confirmed: bgName + ' (' + latinName + ')',
+                    doubts: 'Потребителски въведена страница.',
+                    reason: 'Фишът е създаден ръчно.'
+                },
+                sources: 'Потребителски дневник.'
+            };
+
+            plantDatabase.push(newPlant);
+            closeAddPlantModal();
+            selectPlant(plantDatabase.length - 1);
+        }
+
+        function printPlantPage() {
+            window.print();
+        }
+    </script>
+</body>
+</html>
