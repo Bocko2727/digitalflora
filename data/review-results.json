@@ -258,6 +258,142 @@
       "review_status": "needs_human_review",
       "error": "Автоматичният анализ не завърши: HTTP Error 429: Too Many Requests",
       "analyzed_at": "2026-08-12T06:36:20.026996+00:00"
+    },
+    {
+      "file": "File_008.png",
+      "likely_common_name_bg": "Лечебна медуница",
+      "likely_scientific_name": "Pulmonaria officinalis",
+      "family": "Boraginaceae",
+      "confidence": "medium",
+      "visible_features": [
+        "Дребни фуниевидни съцветия с вариращ цвят от розов до лилаво-син",
+        "Окосмено стъбло и листа",
+        "Частично видими светли петна по листата",
+        "Нископролетно тревисто растение в горска среда"
+      ],
+      "possible_lookalikes": [
+        "Pulmonaria obscura (Тъмна медуница)",
+        "Pulmonaria mollis (Мека медуница)",
+        "Symphytum tuberosum (Клубенов оман - в ранен стадий)"
+      ],
+      "additional_photos_needed": [
+        "Ясен близък план на напълно развитите приосновни (базални) листа",
+        "Детайлно изображение на видовете власинки по листата и стъблото"
+      ],
+      "safety_note": "Информацията е само с научно-познавателна цел. Някои представители на семейство Грапаволистни (Boraginaceae) съдържат токсични пиролизидинови алкалоиди. Не използвайте за самолечение или консумация.",
+      "review_status": "needs_human_review",
+      "analyzed_at": "2026-08-12T06:38:18.530040+00:00"
+    },
+    {
+      "file": "File_009.png",
+      "review_status": "needs_human_review",
+      "error": "Автоматичният анализ не завърши: HTTP Error 429: Too Many Requests",
+      "analyzed_at": "2026-08-12T06:38:19.072508+00:00"
+    },
+    {
+      "file": "File_018.png",
+      "review_status": "needs_human_review",
+      "error": "Автоматичният анализ не завърши: HTTP Error 429: Too Many Requests",
+      "analyzed_at": "2026-08-12T06:38:19.609161+00:00"
+    },
+    {
+      "file": "File_014.png",
+      "likely_common_name_bg": "Сечка / Грахор",
+      "likely_scientific_name": "Lathyrus sp. (напр. Lathyrus sphaericus)",
+      "family": "Fabaceae (Бобови)",
+      "confidence": "low",
+      "visible_features": [
+        "Единичен малък яркорозов до червеникаво-розов цвят с пеперудовидно устройство (характерно за семейство Бобови)",
+        "Много тънка и фина цветна дръжка",
+        "Липсват видими вегетативни органи (листа, стъбло, прилистници) на заснетия екземпляр"
+      ],
+      "possible_lookalikes": [
+        "Lathyrus sphaericus (Сферична сечка)",
+        "Lathyrus cicera (Сечки)",
+        "Lathyrus setifolius",
+        "Vicia sp. (Видове грахор)"
+      ],
+      "additional_photos_needed": [
+        "Ясна снимка на листата и мустачетата (ако има такива)",
+        "Снимка на прилистниците в основата на дръжките",
+        "Снимка на цялото растение и неговия общ вид (хабитус)",
+        "Снимка на плодовете (чушките/бобовете), ако са налични"
+      ],
+      "safety_note": "Някои видове от род Lathyrus съдържат токсични вещества (като бета-аминопропионитрил), които могат да предизвикат латиризъм при консумация. Точната идентификация само по един цвят е невъзможна. Не използвайте за храна или лечение.",
+      "review_status": "needs_human_review",
+      "analyzed_at": "2026-08-12T06:38:29.409870+00:00"
+    },
+    {
+      "file": "File_003.png",
+      "review_status": "needs_human_review",
+      "error": "Автоматичният анализ не завърши: HTTP Error 429: Too Many Requests",
+      "analyzed_at": "2026-08-12T06:38:29.937203+00:00"
+    },
+    {
+      "file": "File_0056666666665.png",
+      "review_status": "needs_human_review",
+      "error": "Автоматичният анализ не завърши: HTTP Error 429: Too Many Requests",
+      "analyzed_at": "2026-08-12T06:38:30.457607+00:00"
+    },
+    {
+      "file": "File_01000000.png",
+      "review_status": "needs_human_review",
+      "error": "Автоматичният анализ не завърши: HTTP Error 429: Too Many Requests",
+      "analyzed_at": "2026-08-12T06:38:30.999526+00:00"
+    },
+    {
+      "file": "File_007.png",
+      "review_status": "needs_human_review",
+      "error": "Автоматичният анализ не завърши: HTTP Error 429: Too Many Requests",
+      "analyzed_at": "2026-08-12T06:38:31.548984+00:00"
+    },
+    {
+      "file": "File_012.png",
+      "review_status": "needs_human_review",
+      "error": "Автоматичният анализ не завърши: HTTP Error 429: Too Many Requests",
+      "analyzed_at": "2026-08-12T06:38:32.084821+00:00"
+    },
+    {
+      "file": "File_010.png",
+      "review_status": "needs_human_review",
+      "error": "Автоматичният анализ не завърши: HTTP Error 429: Too Many Requests",
+      "analyzed_at": "2026-08-12T06:38:32.599585+00:00"
+    },
+    {
+      "file": "File_000.png",
+      "review_status": "needs_human_review",
+      "error": "Автоматичният анализ не завърши: HTTP Error 429: Too Many Requests",
+      "analyzed_at": "2026-08-12T06:38:33.131004+00:00"
+    },
+    {
+      "file": "File_006.png",
+      "review_status": "needs_human_review",
+      "error": "Автоматичният анализ не завърши: HTTP Error 429: Too Many Requests",
+      "analyzed_at": "2026-08-12T06:38:33.636409+00:00"
+    },
+    {
+      "file": "File_020.png",
+      "review_status": "needs_human_review",
+      "error": "Автоматичният анализ не завърши: HTTP Error 429: Too Many Requests",
+      "analyzed_at": "2026-08-12T06:38:34.100380+00:00"
+    },
+    {
+      "file": "File_016.png",
+      "review_status": "needs_human_review",
+      "error": "Автоматичният анализ не завърши: HTTP Error 429: Too Many Requests",
+      "analyzed_at": "2026-08-12T06:38:34.607392+00:00"
+    },
+    {
+      "file": "File_001.png",
+      "review_status": "needs_human_review",
+      "error": "Автоматичният анализ не завърши: HTTP Error 429: Too Many Requests",
+      "analyzed_at": "2026-08-12T06:38:35.129931+00:00"
+    },
+    {
+      "file": "File_013.png",
+      "review_status": "needs_human_review",
+      "error": "Автоматичният анализ не завърши: HTTP Error 429: Too Many Requests",
+      "analyzed_at": "2026-08-12T06:38:35.644266+00:00"
     }
   ]
 }
