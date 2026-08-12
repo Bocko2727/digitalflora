@@ -129,6 +129,135 @@
       "safety_note": "Фините власинки на растението могат да предизвикат дразнене на кожата или лигавиците. Определянето не е окончателно и не трябва да се използва за самолечение.",
       "review_status": "needs_human_review",
       "analyzed_at": "2026-08-11T20:03:27.438035+00:00"
+    },
+    {
+      "file": "File_021.png",
+      "review_status": "needs_human_review",
+      "error": "Автоматичният анализ не завърши: HTTP Error 503: Service Unavailable",
+      "analyzed_at": "2026-08-12T06:35:01.008038+00:00"
+    },
+    {
+      "file": "File_0077777.png",
+      "likely_common_name_bg": "Петниста мъртва коприва",
+      "likely_scientific_name": "Lamium maculatum",
+      "family": "Lamiaceae (Устнатоцветни)",
+      "confidence": "medium",
+      "visible_features": [
+        "Изправено стъбло с прешленовидно разположени розово-лилави двуустни цветове",
+        "Срещуположни, яйцевидни листа с назъбени периферии",
+        "Тръбести цветове с изразена шлемовидна горна устна"
+      ],
+      "possible_lookalikes": [
+        "Lamium purpureum (Червена мъртва коприва)",
+        "Stachys sylvatica (Горски чистец)",
+        "Galeopsis tetrahit (Обикновена бударица)"
+      ],
+      "additional_photos_needed": [
+        "Макроснимка на единичен цвят и чашката",
+        "Близък план на горната и долната повърхност на листата",
+        "Напречен пререз на стъблото"
+      ],
+      "safety_note": "Информацията е само с информативна цел и не представлява ботаническа или медицинска експертиза. Не консумирайте и не използвайте растението за самолечение.",
+      "review_status": "needs_human_review",
+      "analyzed_at": "2026-08-12T06:35:38.475859+00:00"
+    },
+    {
+      "file": "File_0066666.png",
+      "review_status": "needs_human_review",
+      "error": "Автоматичният анализ не завърши: HTTP Error 429: Too Many Requests",
+      "analyzed_at": "2026-08-12T06:35:38.996474+00:00"
+    },
+    {
+      "file": "File_019.png",
+      "review_status": "needs_human_review",
+      "error": "Автоматичният анализ не завърши: HTTP Error 429: Too Many Requests",
+      "analyzed_at": "2026-08-12T06:35:39.498087+00:00"
+    },
+    {
+      "file": "File_003333.png",
+      "review_status": "needs_human_review",
+      "error": "Автоматичният анализ не завърши: HTTP Error 429: Too Many Requests",
+      "analyzed_at": "2026-08-12T06:35:39.831058+00:00"
+    },
+    {
+      "file": "File_001111.png",
+      "review_status": "needs_human_review",
+      "error": "Автоматичният анализ не завърши: HTTP Error 429: Too Many Requests",
+      "analyzed_at": "2026-08-12T06:35:40.345408+00:00"
+    },
+    {
+      "file": "File_015.png",
+      "review_status": "needs_human_review",
+      "error": "Автоматичният анализ не завърши: HTTP Error 429: Too Many Requests",
+      "analyzed_at": "2026-08-12T06:35:40.863151+00:00"
+    },
+    {
+      "file": "File_022.png",
+      "review_status": "needs_human_review",
+      "error": "Автоматичният анализ не завърши: HTTP Error 429: Too Many Requests",
+      "analyzed_at": "2026-08-12T06:35:41.338860+00:00"
+    },
+    {
+      "file": "File_011.png",
+      "review_status": "needs_human_review",
+      "error": "Автоматичният анализ не завърши: HTTP Error 429: Too Many Requests",
+      "analyzed_at": "2026-08-12T06:35:41.827575+00:00"
+    },
+    {
+      "file": "File_024.png",
+      "review_status": "needs_human_review",
+      "error": "Автоматичният анализ не завърши: HTTP Error 429: Too Many Requests",
+      "analyzed_at": "2026-08-12T06:35:42.344024+00:00"
+    },
+    {
+      "file": "File_025.png",
+      "likely_common_name_bg": "Вълнест напръстник",
+      "likely_scientific_name": "Digitalis lanata",
+      "family": "Plantaginaceae (Живовликови)",
+      "confidence": "high",
+      "visible_features": "Високи изправени съцветия с множество тръбести цветове. Цветовете имат бяла долна устна и кремаво-кафяви шарки/мрежа отвътре. Чашките и дръжките на цветовете са гъсто покрито с белезникави вълнести власинки. Листата са продълговати и ланцетни.",
+      "possible_lookalikes": [
+        "Digitalis ferruginea (Ръждив напръстник)",
+        "Digitalis grandiflora (Едроцветен напръстник)"
+      ],
+      "additional_photos_needed": [
+        "Близък план на приосновните листа",
+        "Снимка на стъблото в основата",
+        "Детайлна снимка на отделен цвят отпред"
+      ],
+      "safety_note": "ВНИМАНИЕ: Растението е СИЛНО ОТРОВНО! Всички части на вида Digitalis съдържат опасни сърдечни гликозиди (като дигоксин), които могат да предизвикат тежки аритмии и смърт при поглъщане. Не пипайте без ръкавици и пазете деца и домашни любимци.",
+      "review_status": "needs_human_review",
+      "analyzed_at": "2026-08-12T06:36:18.276899+00:00"
+    },
+    {
+      "file": "File_0088888.png",
+      "review_status": "needs_human_review",
+      "error": "Автоматичният анализ не завърши: HTTP Error 429: Too Many Requests",
+      "analyzed_at": "2026-08-12T06:36:18.497486+00:00"
+    },
+    {
+      "file": "File_026.png",
+      "review_status": "needs_human_review",
+      "error": "Автоматичният анализ не завърши: HTTP Error 429: Too Many Requests",
+      "analyzed_at": "2026-08-12T06:36:18.775590+00:00"
+    },
+    {
+      "file": "File_009999.png",
+      "review_status": "needs_human_review",
+      "error": "Автоматичният анализ не завърши: HTTP Error 429: Too Many Requests",
+      "analyzed_at": "2026-08-12T06:36:19.012628+00:00"
+    },
+    {
+      "file": "File_00000.png",
+      "review_status": "needs_human_review",
+      "error": "Автоматичният анализ не завърши: HTTP Error 429: Too Many Requests",
+      "analyzed_at": "2026-08-12T06:36:19.524649+00:00"
+    },
+    {
+      "file": "File_00444444.png",
+      "review_status": "needs_human_review",
+      "error": "Автоматичният анализ не завърши: HTTP Error 429: Too Many Requests",
+      "analyzed_at": "2026-08-12T06:36:20.026996+00:00"
     }
   ]
 }
