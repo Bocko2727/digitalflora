@@ -129,6 +129,120 @@
       "safety_note": "Фините власинки на растението могат да предизвикат дразнене на кожата или лигавиците. Определянето не е окончателно и не трябва да се използва за самолечение.",
       "review_status": "needs_human_review",
       "analyzed_at": "2026-08-11T20:03:27.438035+00:00"
+    },
+    {
+      "file": "File_008.png",
+      "review_status": "needs_human_review",
+      "error": "Автоматичният анализ не завърши: HTTP Error 429: Too Many Requests",
+      "analyzed_at": "2026-08-12T06:55:25.256572+00:00"
+    },
+    {
+      "file": "File_002.png",
+      "review_status": "needs_human_review",
+      "error": "Автоматичният анализ не завърши: HTTP Error 429: Too Many Requests",
+      "analyzed_at": "2026-08-12T06:55:25.697642+00:00"
+    },
+    {
+      "file": "File_009.png",
+      "review_status": "needs_human_review",
+      "error": "Автоматичният анализ не завърши: HTTP Error 429: Too Many Requests",
+      "analyzed_at": "2026-08-12T06:55:25.960388+00:00"
+    },
+    {
+      "file": "File_005.png",
+      "review_status": "needs_human_review",
+      "error": "Автоматичният анализ не завърши: HTTP Error 429: Too Many Requests",
+      "analyzed_at": "2026-08-12T06:55:26.241079+00:00"
+    },
+    {
+      "file": "File_018.png",
+      "review_status": "needs_human_review",
+      "error": "Автоматичният анализ не завърши: HTTP Error 429: Too Many Requests",
+      "analyzed_at": "2026-08-12T06:55:26.708258+00:00"
+    },
+    {
+      "file": "File_014.png",
+      "review_status": "needs_human_review",
+      "error": "Автоматичният анализ не завърши: HTTP Error 429: Too Many Requests",
+      "analyzed_at": "2026-08-12T06:55:26.946881+00:00"
+    },
+    {
+      "file": "File_003.png",
+      "review_status": "needs_human_review",
+      "error": "Автоматичният анализ не завърши: HTTP Error 429: Too Many Requests",
+      "analyzed_at": "2026-08-12T06:55:27.486432+00:00"
+    },
+    {
+      "file": "File_0056666666665.png",
+      "review_status": "needs_human_review",
+      "error": "Автоматичният анализ не завърши: HTTP Error 429: Too Many Requests",
+      "analyzed_at": "2026-08-12T06:55:27.777873+00:00"
+    },
+    {
+      "file": "File_01000000.png",
+      "review_status": "needs_human_review",
+      "error": "Автоматичният анализ не завърши: HTTP Error 429: Too Many Requests",
+      "analyzed_at": "2026-08-12T06:55:28.066274+00:00"
+    },
+    {
+      "file": "File_007.png",
+      "review_status": "needs_human_review",
+      "error": "Автоматичният анализ не завърши: HTTP Error 429: Too Many Requests",
+      "analyzed_at": "2026-08-12T06:55:28.352201+00:00"
+    },
+    {
+      "file": "File_004.png",
+      "review_status": "needs_human_review",
+      "error": "Автоматичният анализ не завърши: HTTP Error 429: Too Many Requests",
+      "analyzed_at": "2026-08-12T06:55:28.837286+00:00"
+    },
+    {
+      "file": "File_012.png",
+      "review_status": "needs_human_review",
+      "error": "Автоматичният анализ не завърши: HTTP Error 429: Too Many Requests",
+      "analyzed_at": "2026-08-12T06:55:29.110289+00:00"
+    },
+    {
+      "file": "File_010.png",
+      "review_status": "needs_human_review",
+      "error": "Автоматичният анализ не завърши: HTTP Error 429: Too Many Requests",
+      "analyzed_at": "2026-08-12T06:55:29.392653+00:00"
+    },
+    {
+      "file": "File_000.png",
+      "review_status": "needs_human_review",
+      "error": "Автоматичният анализ не завърши: HTTP Error 429: Too Many Requests",
+      "analyzed_at": "2026-08-12T06:55:29.658649+00:00"
+    },
+    {
+      "file": "File_006.png",
+      "review_status": "needs_human_review",
+      "error": "Автоматичният анализ не завърши: HTTP Error 429: Too Many Requests",
+      "analyzed_at": "2026-08-12T06:55:29.879728+00:00"
+    },
+    {
+      "file": "File_020.png",
+      "review_status": "needs_human_review",
+      "error": "Автоматичният анализ не завърши: HTTP Error 429: Too Many Requests",
+      "analyzed_at": "2026-08-12T06:55:30.096485+00:00"
+    },
+    {
+      "file": "File_016.png",
+      "review_status": "needs_human_review",
+      "error": "Автоматичният анализ не завърши: HTTP Error 429: Too Many Requests",
+      "analyzed_at": "2026-08-12T06:55:30.385831+00:00"
+    },
+    {
+      "file": "File_001.png",
+      "review_status": "needs_human_review",
+      "error": "Автоматичният анализ не завърши: HTTP Error 429: Too Many Requests",
+      "analyzed_at": "2026-08-12T06:55:30.640102+00:00"
+    },
+    {
+      "file": "File_013.png",
+      "review_status": "needs_human_review",
+      "error": "Автоматичният анализ не завърши: HTTP Error 429: Too Many Requests",
+      "analyzed_at": "2026-08-12T06:55:30.866528+00:00"
     }
   ]
 }
