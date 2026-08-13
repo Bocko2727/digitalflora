@@ -131,120 +131,6 @@
       "analyzed_at": "2026-08-11T20:03:27.438035+00:00"
     },
     {
-      "file": "File_008.png",
-      "review_status": "needs_human_review",
-      "error": "Автоматичният анализ не завърши: HTTP Error 429: Too Many Requests",
-      "analyzed_at": "2026-08-12T06:55:25.256572+00:00"
-    },
-    {
-      "file": "File_002.png",
-      "review_status": "needs_human_review",
-      "error": "Автоматичният анализ не завърши: HTTP Error 429: Too Many Requests",
-      "analyzed_at": "2026-08-12T06:55:25.697642+00:00"
-    },
-    {
-      "file": "File_009.png",
-      "review_status": "needs_human_review",
-      "error": "Автоматичният анализ не завърши: HTTP Error 429: Too Many Requests",
-      "analyzed_at": "2026-08-12T06:55:25.960388+00:00"
-    },
-    {
-      "file": "File_005.png",
-      "review_status": "needs_human_review",
-      "error": "Автоматичният анализ не завърши: HTTP Error 429: Too Many Requests",
-      "analyzed_at": "2026-08-12T06:55:26.241079+00:00"
-    },
-    {
-      "file": "File_018.png",
-      "review_status": "needs_human_review",
-      "error": "Автоматичният анализ не завърши: HTTP Error 429: Too Many Requests",
-      "analyzed_at": "2026-08-12T06:55:26.708258+00:00"
-    },
-    {
-      "file": "File_014.png",
-      "review_status": "needs_human_review",
-      "error": "Автоматичният анализ не завърши: HTTP Error 429: Too Many Requests",
-      "analyzed_at": "2026-08-12T06:55:26.946881+00:00"
-    },
-    {
-      "file": "File_003.png",
-      "review_status": "needs_human_review",
-      "error": "Автоматичният анализ не завърши: HTTP Error 429: Too Many Requests",
-      "analyzed_at": "2026-08-12T06:55:27.486432+00:00"
-    },
-    {
-      "file": "File_0056666666665.png",
-      "review_status": "needs_human_review",
-      "error": "Автоматичният анализ не завърши: HTTP Error 429: Too Many Requests",
-      "analyzed_at": "2026-08-12T06:55:27.777873+00:00"
-    },
-    {
-      "file": "File_01000000.png",
-      "review_status": "needs_human_review",
-      "error": "Автоматичният анализ не завърши: HTTP Error 429: Too Many Requests",
-      "analyzed_at": "2026-08-12T06:55:28.066274+00:00"
-    },
-    {
-      "file": "File_007.png",
-      "review_status": "needs_human_review",
-      "error": "Автоматичният анализ не завърши: HTTP Error 429: Too Many Requests",
-      "analyzed_at": "2026-08-12T06:55:28.352201+00:00"
-    },
-    {
-      "file": "File_004.png",
-      "review_status": "needs_human_review",
-      "error": "Автоматичният анализ не завърши: HTTP Error 429: Too Many Requests",
-      "analyzed_at": "2026-08-12T06:55:28.837286+00:00"
-    },
-    {
-      "file": "File_012.png",
-      "review_status": "needs_human_review",
-      "error": "Автоматичният анализ не завърши: HTTP Error 429: Too Many Requests",
-      "analyzed_at": "2026-08-12T06:55:29.110289+00:00"
-    },
-    {
-      "file": "File_010.png",
-      "review_status": "needs_human_review",
-      "error": "Автоматичният анализ не завърши: HTTP Error 429: Too Many Requests",
-      "analyzed_at": "2026-08-12T06:55:29.392653+00:00"
-    },
-    {
-      "file": "File_000.png",
-      "review_status": "needs_human_review",
-      "error": "Автоматичният анализ не завърши: HTTP Error 429: Too Many Requests",
-      "analyzed_at": "2026-08-12T06:55:29.658649+00:00"
-    },
-    {
-      "file": "File_006.png",
-      "review_status": "needs_human_review",
-      "error": "Автоматичният анализ не завърши: HTTP Error 429: Too Many Requests",
-      "analyzed_at": "2026-08-12T06:55:29.879728+00:00"
-    },
-    {
-      "file": "File_020.png",
-      "review_status": "needs_human_review",
-      "error": "Автоматичният анализ не завърши: HTTP Error 429: Too Many Requests",
-      "analyzed_at": "2026-08-12T06:55:30.096485+00:00"
-    },
-    {
-      "file": "File_016.png",
-      "review_status": "needs_human_review",
-      "error": "Автоматичният анализ не завърши: HTTP Error 429: Too Many Requests",
-      "analyzed_at": "2026-08-12T06:55:30.385831+00:00"
-    },
-    {
-      "file": "File_001.png",
-      "review_status": "needs_human_review",
-      "error": "Автоматичният анализ не завърши: HTTP Error 429: Too Many Requests",
-      "analyzed_at": "2026-08-12T06:55:30.640102+00:00"
-    },
-    {
-      "file": "File_013.png",
-      "review_status": "needs_human_review",
-      "error": "Автоматичният анализ не завърши: HTTP Error 429: Too Many Requests",
-      "analyzed_at": "2026-08-12T06:55:30.866528+00:00"
-    },
-    {
       "file": "File_021.png",
       "likely_common_name_bg": "Бодлив чал (Миши бод)",
       "likely_scientific_name": "Ruscus aculeatus",
@@ -358,12 +244,6 @@
       "safety_note": "Внимание: Олеандърът е изключително токсично растение. Всички негови части съдържат сърдечни гликозиди и са опасни за хора и животни при поглъщане или контакт с растителния сок.",
       "review_status": "needs_human_review",
       "analyzed_at": "2026-08-12T07:25:06.278597+00:00"
-    },
-    {
-      "file": "File_024.png",
-      "review_status": "needs_human_review",
-      "error": "Автоматичният анализ не завърши: HTTP Error 429: Too Many Requests",
-      "analyzed_at": "2026-08-12T07:25:06.546395+00:00"
     },
     {
       "file": "File_025.png",
@@ -554,6 +434,409 @@
       "safety_note": "Визуалното разпознаване на растения по снимка е само предварително. Никога не консумирайте и не използвайте диви растения за медицински цели без потвърждение от ботаник.",
       "review_status": "needs_human_review",
       "analyzed_at": "2026-08-12T07:27:59.342907+00:00"
+    },
+    {
+      "file": "File_000.png",
+      "likely_common_name_bg": "Френски клин",
+      "likely_scientific_name": "Astragalus monspessulanus",
+      "family": "Fabaceae (Бобови)",
+      "confidence": "medium",
+      "visible_features": [
+        "Нечифтоперести листа с множество малки, елиптични листчета",
+        "Мотилкови цветове с лилаво-розов до магента цвят",
+        "Гъсти, главести до сбити гроздовидни съцветия",
+        "Нискорастящ, стелещ се тревист хабитус"
+      ],
+      "possible_lookalikes": [
+        "Astragalus onobrychis (Еспарзетов клин)",
+        "Други видове от род Astragalus (Клин)",
+        "Видове от род Oxytropis (Остролодник)"
+      ],
+      "additional_photos_needed": [
+        "Близък план на чашката и отделните венчелистчета",
+        "Снимка на плодовете (бобовете), ако са налични",
+        "Детайл на прилистниците в основата на дръжките"
+      ],
+      "safety_note": "Някои видове от род Astragalus могат да бъдат токсични за хора и животни поради натрупване на селен или съдържание на алкалоиди. Не използвайте за храна или лечение без потвърждение от ботаник.",
+      "review_status": "needs_human_review",
+      "analyzed_at": "2026-08-13T12:33:05.415116+00:00"
+    },
+    {
+      "file": "File_001.png",
+      "likely_common_name_bg": "Ябълка",
+      "likely_scientific_name": "Malus domestica",
+      "family": "Rosaceae",
+      "confidence": "medium",
+      "visible_features": [
+        "Бяло-розови цветове с пет венчелистчета",
+        "Множество тичинки с жълти прашници",
+        "Цветове, събрани в щитовидни съцветия върху къси клонки",
+        "Млади зелени листа, появяващи се заедно с цветовете"
+      ],
+      "possible_lookalikes": [
+        "Дива ябълка (Malus sylvestris)",
+        "Круша (Pyrus communis)",
+        "Дюля (Cydonia oblonga)"
+      ],
+      "additional_photos_needed": [
+        "Близък план на напълно развити листа и листни дръжки",
+        "Детайлна снимка на ствола и кората",
+        "Снимка на цялата корона на дървото",
+        "Снимка на плодове (когато са налични)"
+      ],
+      "safety_note": "Идентификацията по изображение е предварителна. Някои видове от това семейство съдържат съединения (като цианогенни гликозиди в семената), които могат да бъдат токсични. Не консумирайте части от растението без сигурно потвърждение.",
+      "review_status": "needs_human_review",
+      "analyzed_at": "2026-08-13T12:33:20.691879+00:00"
+    },
+    {
+      "file": "File_002.png",
+      "likely_common_name_bg": "Двулистен синчец",
+      "likely_scientific_name": "Scilla bifolia",
+      "family": "Asparagaceae (Зайчесянкови)",
+      "confidence": "medium",
+      "visible_features": "Ниско пролетно растение с няколко синьо-виолетови звездовидни цвята, сини тичинки и тесни, линейни зелени листа, поникващи сред суха листна постелка.",
+      "possible_lookalikes": "Scilla siberica (Сибирски синчец), Chionodoxa species (Снежна звезда), Hyacinthella",
+      "additional_photos_needed": "Близък план на цветовете с фокус върху тичинките, брой и разположение на листата в основата, както и снимка на цялото растение от друг ъгъл.",
+      "safety_note": "Растението съдържа токсични съединения (сърдечни гликозиди) и не бива да се консумира.",
+      "review_status": "needs_human_review",
+      "analyzed_at": "2026-08-13T12:33:52.449532+00:00"
+    },
+    {
+      "file": "File_004.png",
+      "likely_common_name_bg": "Кукувиче грозде",
+      "likely_scientific_name": "Muscari sp.",
+      "family": "Asparagaceae",
+      "confidence": "medium",
+      "visible_features": "Гроздовидно съцветие от малки, кълбовидни сини цветчета с по-светли ръбове; гладки, месисти зелени листа, излизащи от основата; нискорастящо пролетно растение сред скали и трева.",
+      "possible_lookalikes": [
+        "Bellevalia",
+        "Hyacinthella",
+        "Scilla"
+      ],
+      "additional_photos_needed": [
+        "Близък план на отделните цветчета",
+        "Пълен изглед на формата и ширината на листата",
+        "Основа на стъблото и луковицата"
+      ],
+      "safety_note": "Това е ботанически анализ, а не медицински или кулинарен съвет. Някои диви луковични растения са токсични при консумация.",
+      "review_status": "needs_human_review",
+      "analyzed_at": "2026-08-13T12:34:52.864501+00:00"
+    },
+    {
+      "file": "File_003.png",
+      "likely_common_name_bg": "Пролетен минзухар",
+      "likely_scientific_name": "Crocus sp.",
+      "family": "Iridaceae (Перуникови)",
+      "confidence": "medium",
+      "visible_features": "Три нискорастящи лилави цвята с шест околоцветни листчета и ярки оранжеви тичинки и близалце, растящи сред суха тревиста растителност.",
+      "possible_lookalikes": "Мразовец / Есенен минзухар (Colchicum - силно отровен, с 6 тичинки вместо 3 при Crocus), други лилави видове от род Crocus.",
+      "additional_photos_needed": "Снимки в близък план на тичинките и близалцето, основата на цвета, листата с техните белези, както и подземните органи (грудколуковица).",
+      "safety_note": "Внимание: Пролетните минзухари могат да се объркат с отровния мразовец (Colchicum), съдържащ колхицин. Не консумирайте и не използвайте диви растения за лечебни цели без потвърждение от експерт.",
+      "review_status": "needs_human_review",
+      "analyzed_at": "2026-08-13T12:39:51.767802+00:00"
+    },
+    {
+      "file": "File_005.png",
+      "likely_common_name_bg": "Бяла тлъстига (червеникава форма)",
+      "likely_scientific_name": "Sedum album",
+      "family": "Crassulaceae (Дебелецови)",
+      "confidence": "medium",
+      "visible_features": [
+        "Нисък, пълзящ сукулент, растящ на туфи",
+        "Малки, месести, надебелени листа с продълговата/яйцевидна форма",
+        "Тъмночервеникав до лилав цвят на листата, дължащ се на слънчев стрес или засушаване",
+        "Тънки вкореняващи се стъбла върху открита почва",
+        "Липсват видими цветове или съцветия"
+      ],
+      "possible_lookalikes": [
+        "Sedum atratum",
+        "Sedum rubrotinctum",
+        "Sedum stefco",
+        "Sedum hispanicum"
+      ],
+      "additional_photos_needed": [
+        "Снимка на цветовете и съцветието по време на цъфтеж",
+        "Близък план на подреждането на листата върху развито стъбло",
+        "Снимка на естественото местообитание и околната растителност"
+      ],
+      "safety_note": "Някои видове от род Тлъстига (Sedum) съдържат алкалоиди и могат да предизвикат стомашно-чревни смущения или кожно дразнене. Не използвайте за храна или лечение въз основа на визуално идентифициране.",
+      "review_status": "needs_human_review",
+      "analyzed_at": "2026-08-13T12:40:32.062283+00:00"
+    },
+    {
+      "file": "File_0056666666665.png",
+      "likely_common_name_bg": "Незабравка",
+      "likely_scientific_name": "Myosotis sp.",
+      "family": "Boraginaceae (Грапаволистни)",
+      "confidence": "medium",
+      "visible_features": "Малки светлосини цветове с петолъчно венче и жълто-оранжев пръстен в центъра. Прави, тънки стъбла с продълговати, ненарязани зелени листа. Вляво се вижда и друго съцветие с тъмносини цветове (вероятно от род Ajuga).",
+      "possible_lookalikes": "Myosotis sylvatica, Myosotis arvensis, Brunnera macrophylla, Omphalodes verna",
+      "additional_photos_needed": "Макроснимка на чашката на цвета (за проверка на вида власинки), снимка на приосновните листа и детайл на цялото растение.",
+      "safety_note": "Някои видове от семейство Boraginaceae съдържат пиролизидинови алкалоиди, които са токсични при консумация. Идентификацията по снимка е само с информативна цел и не гарантира безопасност.",
+      "review_status": "needs_human_review",
+      "analyzed_at": "2026-08-13T12:41:15.163812+00:00"
+    },
+    {
+      "file": "File_006.png",
+      "likely_common_name_bg": "Пълзящо срещниче",
+      "likely_scientific_name": "Ajuga reptans",
+      "family": "Lamiaceae (Устноцветни)",
+      "confidence": "medium",
+      "visible_features": "Вертикално класовидно съцветие с множество наситено синьо-виолетови двуустни цветове; тъмни (лилавеещи) прицветни листчета; зелени продълговати листа в основата и по стъблото.",
+      "possible_lookalikes": [
+        "Ajuga genevensis (Женевско срещниче)",
+        "Ajuga pyramidalis (Пирамидално срещниче)",
+        "Prunella vulgaris (Обикновена кафявка)"
+      ],
+      "additional_photos_needed": [
+        "Снимка в основата на растението (за проверка за наличие на пълзящи издънки/столони)",
+        "Детайлен близък план на единичен цвят и чашката",
+        "Снимка на цялото растение отстрани с ясна видимост на окосмяването по стъблото"
+      ],
+      "safety_note": "Информацията е предоставена само с цел ботаническа идентификация. Растението не бива да се консумира или използва за медицински цели без потвърждение от специалист.",
+      "review_status": "needs_human_review",
+      "analyzed_at": "2026-08-13T12:41:42.326491+00:00"
+    },
+    {
+      "file": "File_007.png",
+      "likely_common_name_bg": "Лечебна иглика",
+      "likely_scientific_name": "Primula veris",
+      "family": "Primulaceae",
+      "confidence": "high",
+      "visible_features": [
+        "Яркожълти, тръбовидни цветове, събрани в сенниковидно съцветие на върха на единично безлистно стъбло",
+        "Приосновни, силно набръчкани зелени листа с ясно изразена нерватура",
+        "Светлозелена, леко подута чашка в основата на венчето"
+      ],
+      "possible_lookalikes": [
+        "Primula elatior (Висока иглика)",
+        "Primula vulgaris (Обикновена иглика)"
+      ],
+      "additional_photos_needed": [
+        "Близък план на вътрешността на цвета (венчелистчетата и оцветяването в гърлото)",
+        "Макро снимка на долната повърхност и мъхото покритие на листата"
+      ],
+      "safety_note": "Някои видове от род Primula могат да предизвикат контактен дерматит при чувствителни хора. Не използвайте за билколечение или консумация без потвърждение от ботаник.",
+      "review_status": "needs_human_review",
+      "analyzed_at": "2026-08-13T12:42:16.757621+00:00"
+    },
+    {
+      "file": "File_008.png",
+      "likely_common_name_bg": "Лечебна медуница",
+      "likely_scientific_name": "Pulmonaria officinalis",
+      "family": "Boraginaceae (Грапаволистни)",
+      "confidence": "medium",
+      "visible_features": [
+        "Малки фуниевидни цветове с промяна в багрите от розово-червеникави пъпки до лилаво-сини отворени цветове",
+        "Окосмени стъбла и чашклистчета",
+        "Зелени листа със светли петна, видими в основата",
+        "Растението е разположено в горска среда сред суха листна маса"
+      ],
+      "possible_lookalikes": [
+        "Pulmonaria obscura (Тъмна медуница)",
+        "Pulmonaria mollis (Мека медуница)",
+        "Symphytum officinale (Лечебен черен оман - млади растения)"
+      ],
+      "additional_photos_needed": [
+        "Ясен близък план на напълно развитите приосновни (базални) листа",
+        "Детайлна снимка на вида власинки по стъблото и чашката",
+        "Снимка на цялото растение отблизо без закриващи сухи листа"
+      ],
+      "safety_note": "Тази идентификация е само с информативна цел. Не използвайте растението за самолечение или консумация без експертно потвърждение от ботаник.",
+      "review_status": "needs_human_review",
+      "analyzed_at": "2026-08-13T12:45:16.791573+00:00"
+    },
+    {
+      "file": "File_009.png",
+      "likely_common_name_bg": "Червена медуница",
+      "likely_scientific_name": "Pulmonaria rubra",
+      "family": "Boraginaceae",
+      "confidence": "medium",
+      "visible_features": "Червеникаво-розови тръбести цветове, разположени във връхни съцветия; гъсто окосмени стъбла и продълговати зелени листа.",
+      "possible_lookalikes": "Лечебна медуница (Pulmonaria officinalis), Мека медуница (Pulmonaria mollis), видове оман (Symphytum spp.)",
+      "additional_photos_needed": "Близък план на разгърнати приосновни листа (за проверка на петна и окосмяване), чашката на цвета и основата на растението.",
+      "safety_note": "Не използвайте растението за храна или лечение. Определянето по снимка не е гарантирано и е необходим преглед от специалист.",
+      "review_status": "needs_human_review",
+      "analyzed_at": "2026-08-13T12:46:06.975712+00:00"
+    },
+    {
+      "file": "File_010.png",
+      "likely_common_name_bg": "Лечебна медуница",
+      "likely_scientific_name": "Pulmonaria officinalis",
+      "family": "Boraginaceae (Грапаволистни)",
+      "confidence": "medium",
+      "visible_features": [
+        "Фуниевидни цветове, променящи цвета си от розово-червен към виолетово-син",
+        "Зелени стъблени листа със светли петна",
+        "Окосмени стъбла и цветни чашки",
+        "Ниско тревисто растение, растящо в широколистна горска подлесна покривка"
+      ],
+      "possible_lookalikes": [
+        "Червена медуница (Pulmonaria rubra)",
+        "Мека медуница (Pulmonaria mollis)",
+        "Тъмна медуница (Pulmonaria obscura)"
+      ],
+      "additional_photos_needed": [
+        "Ясен близък план на прикореновите (базалните) листа и техните дръжки",
+        "Макро снимка на окосмяването по горната и долната повърхност на листата",
+        "Детайлна снимка на разтворена цветна чашка"
+      ],
+      "safety_note": "Визуалното определяне по снимка не е абсолютно надеждно. Растението не трябва да се консумира или използва за лечебни цели без преглед от специалист ботаник.",
+      "review_status": "needs_human_review",
+      "analyzed_at": "2026-08-13T12:47:00.271011+00:00"
+    },
+    {
+      "file": "File_01000000.png",
+      "likely_common_name_bg": "Пълзящо срещаниче",
+      "likely_scientific_name": "Ajuga reptans",
+      "family": "Lamiaceae (Устноцветни)",
+      "confidence": "medium",
+      "visible_features": [
+        "Тъмносини до виолетови двуустни цветове, събрани в класoвидно съцветие",
+        "Четириръбесто изправено стъбло с власинки",
+        "Срещуположно разположени овални листа с леко назъбен ръб",
+        "Растението се намира в горска среда сред суха листна постеля"
+      ],
+      "possible_lookalikes": [
+        "Ajuga genevensis (Обикновено срещаниче)",
+        "Ajuga pyramidalis (Пирамидално срещаниче)",
+        "Prunella vulgaris (Обикновена кафявка)"
+      ],
+      "additional_photos_needed": [
+        "Близък план на индивидуалните цветове и чашката",
+        "Снимка на основата на стъблото за проверка за пълзящи издънки (столони)",
+        "Детайлна снимка на окосмяването по стъблото и листата"
+      ],
+      "safety_note": "Това определяне е само с информативна цел и не представлява ботаническа потвърденост или медицински съвет. Някои растения могат да бъдат токсични или да предизвикат алергични реакции.",
+      "review_status": "needs_human_review",
+      "analyzed_at": "2026-08-13T12:47:18.261632+00:00"
+    },
+    {
+      "file": "File_012.png",
+      "likely_common_name_bg": "Равнец",
+      "likely_scientific_name": "Achillea sp.",
+      "family": "Asteraceae",
+      "confidence": "medium",
+      "visible_features": "Гъста туфа от изправени, сребристо-зелени, многократно пернато-нарязани листа с фино влакнесто покритие; расте върху скалист/варовиков терен; виждат се формиращи се цветни пъпки в основата.",
+      "possible_lookalikes": "Artemisia sp. (Пелин), Tanacetum sp. (Въртипоп), други видове от род Achillea",
+      "additional_photos_needed": "Снимка на отворените съцветия (кошнички) отблизо, снимка на цялото стъбло в пълна височина.",
+      "safety_note": "Не използвайте за консумация или лечение. Идентификацията по снимка не е гарантирана и някои растения могат да предизвикат алергични реакции или токсичност.",
+      "review_status": "needs_human_review",
+      "analyzed_at": "2026-08-13T12:48:18.407766+00:00"
+    },
+    {
+      "file": "File_013.png",
+      "likely_common_name_bg": "Клопотар",
+      "likely_scientific_name": "Rhinanthus sp.",
+      "family": "Orobanchaceae",
+      "confidence": "medium",
+      "visible_features": [
+        "Жълти двуустни цветове",
+        "Подута, светлоезелена чашка",
+        "Остро назъбени прицветници",
+        "Противоположно разположени назъбени ланцетни листа"
+      ],
+      "possible_lookalikes": [
+        "Melampyrum sp. (Коприварка)",
+        "Pedicularis sp."
+      ],
+      "additional_photos_needed": [
+        "Снимка на цялото растение в естествената му среда",
+        "Близък план на зъбците на прицветниците и горната устна на цвета",
+        "Снимка на основата на стъблото"
+      ],
+      "safety_note": "Това растение е полупаразитно и съдържа гликозиди (напр. аукубин), които могат да бъдат леко токсични. Не консумирайте и не използвайте за самолечение.",
+      "review_status": "needs_human_review",
+      "analyzed_at": "2026-08-13T12:56:15.707499+00:00"
+    },
+    {
+      "file": "File_014.png",
+      "likely_common_name_bg": "Секирче (вероятно)",
+      "likely_scientific_name": "Lathyrus sp.",
+      "family": "Fabaceae (Бобови)",
+      "confidence": "low",
+      "visible_features": "Единичен дребен, яркорозов цвят с устройство, типично за бобовите растения (пеперудовидно), разположен върху много тънка дръжка.",
+      "possible_lookalikes": "Различни видове от родовете Секирче (Lathyrus) и Фий (Vicia).",
+      "additional_photos_needed": "Снимки на цялото растение в естествената му среда, включително листата, стъблото, прилистниците и чашката на цвета.",
+      "safety_note": "Идентификацията по единичен откъснат цвят е несигурна. Не използвайте растението за храна или лечение.",
+      "review_status": "needs_human_review",
+      "analyzed_at": "2026-08-13T12:56:28.454690+00:00"
+    },
+    {
+      "file": "File_016.png",
+      "likely_common_name_bg": "Лопен",
+      "likely_scientific_name": "Verbascum sp.",
+      "family": "Scrophulariaceae (Живеничеви)",
+      "confidence": "medium",
+      "visible_features": "Високо, разклонено тревисто растение с множество жълти цветове с пет венчелистчета, събрани в изправени съцветия. В основата се виждат едри, набръчкани зелени листа.",
+      "possible_lookalikes": "Различни видове от род Verbascum (напр. Verbascum sinuatum, Verbascum densiflorum, Verbascum thapsus), както и Agrimonia eupatoria.",
+      "additional_photos_needed": "Близък план на отделните цветове (тичинки и прашници), детайли на стъблото и власинките по него, както и чиста снимка на приосновните листа.",
+      "safety_note": "Информацията е представена само с информативна цел и не представлява медицински съвет или окончателно ботаническо потвърждение. Семената и други части на някои видове лопен могат да съдържат токсични вещества (сапонини).",
+      "review_status": "needs_human_review",
+      "analyzed_at": "2026-08-13T12:56:48.147046+00:00"
+    },
+    {
+      "file": "File_018.png",
+      "likely_common_name_bg": "Обикновена шипка",
+      "likely_scientific_name": "Rosa canina",
+      "family": "Rosaceae",
+      "confidence": "medium",
+      "visible_features": "Единичен цвят с 5 светлобели до бледорозови венчелистчета и множество жълти тичинки; нечифтоперести листа с овални назъбени листчета; храстовиден хабитус.",
+      "possible_lookalikes": "Rosa arvensis (Полева шипка), Rosa dumalis, както и други диви видове от род Rosa.",
+      "additional_photos_needed": "Снимки на шиповете/тръните по стъблото, чашелистчетата под цвета и зрелите плодове (шипки).",
+      "safety_note": "Стъблата на диви рози обикновено имат остри тръни, които могат да причинят нараняване. Този анализ е само с информативна цел и не гарантира пълна точност.",
+      "review_status": "needs_human_review",
+      "analyzed_at": "2026-08-13T12:57:05.845995+00:00"
+    },
+    {
+      "file": "File_020.png",
+      "likely_common_name_bg": "Червен мак",
+      "likely_scientific_name": "Papaver rhoeas",
+      "family": "Papaveraceae",
+      "confidence": "medium",
+      "visible_features": [
+        "Яркочервени до оранжеви венчелистчета с фино набръчкана текстура",
+        "Тъмен център с множество тичинки",
+        "Тънко зелено стъбло"
+      ],
+      "possible_lookalikes": [
+        "Papaver dubium (Съмнителен мак)",
+        "Papaver argemone (Пясъчен мак)",
+        "Glaucium corniculatum (Рогат мак)"
+      ],
+      "additional_photos_needed": [
+        "Снимка на семенната кутийка за точна идентификация на вида",
+        "Снимка на листата (в основата и по стъблото)",
+        "Близък план на власинките по стъблото"
+      ],
+      "safety_note": "Растенията от семейство Макови съдържат алкалоиди и могат да бъдат токсични при поглъщане. Не консумирайте и измийте ръцете си след контакт.",
+      "review_status": "needs_human_review",
+      "analyzed_at": "2026-08-13T12:57:21.003923+00:00"
+    },
+    {
+      "file": "File_024.png",
+      "likely_common_name_bg": "Обикновено плюскавиче",
+      "likely_scientific_name": "Silene vulgaris",
+      "family": "Caryophyllaceae (Карамфилови)",
+      "confidence": "high",
+      "visible_features": [
+        "Бели венчелистчета, дълбоко раздвоени на върха",
+        "Характерна набъбнала (мехурчеста) чашка с мрежесто жилкуване",
+        "Множество цветове и пъпки, разположени на тънки разклонени дръжки",
+        "Тревисто растение, растящо сред висока трева"
+      ],
+      "possible_lookalikes": [
+        "Silene uniflora",
+        "Silene latifolia"
+      ],
+      "additional_photos_needed": [
+        "Близък план на листата и тяхното разположение върху стъблото",
+        "Снимка на основата на растението (приосновните листа)",
+        "Близък план на плодните капсули, ако има налични"
+      ],
+      "safety_note": "Идентификацията е само с информативна цел и не представлява ботаническа или медицинска гаранция. Не консумирайте диворастящи растения.",
+      "review_status": "needs_human_review",
+      "analyzed_at": "2026-08-13T12:58:22.923943+00:00"
     }
   ]
 }
