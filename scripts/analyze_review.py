@@ -19,6 +19,7 @@ BATCH_SIZE = int(os.environ.get('GEMINI_REVIEW_BATCH_SIZE', '5'))
 MAX_IMAGE_RETRIES = 5
 MAX_BATCH_RUNS = int(os.environ.get('GEMINI_MAX_BATCH_RUNS', '2'))
 INITIAL_BACKOFF_SECONDS = 5
+RETRYABLE_HTTP_CODES = {429, 503}
 PROMPT = '''You are a cautious botanical image triage assistant. Analyze ONE image only. Do not infer unseen features. Return valid JSON only with these keys: file, likely_common_name_bg, likely_scientific_name, family, confidence (low|medium|high), visible_features, possible_lookalikes, additional_photos_needed, safety_note, review_status. Use Bulgarian for all descriptive strings. review_status must be needs_human_review. If the organism cannot be determined from the image, state that clearly and keep confidence low. Do not provide medical advice or claim an identification is certain.'''
 
 def now():
@@ -37,7 +38,7 @@ def retry_runs(item):
 
 def is_retryable(item):
     error = str(item.get('error', ''))
-    return ('HTTP Error 429' in error or 'RESOURCE_EXHAUSTED' in error) and retry_runs(item) < MAX_BATCH_RUNS
+    return ('HTTP Error 429' in error or 'HTTP Error 503' in error or 'RESOURCE_EXHAUSTED' in error) and retry_runs(item) < MAX_BATCH_RUNS
 
 def analyze(path):
     mime = mimetypes.guess_type(path.name)[0] or 'image/jpeg'
@@ -66,13 +67,13 @@ def analyze_with_retry(path):
         try:
             return analyze(path)
         except urllib.error.HTTPError as exc:
-            if exc.code != 429 or attempt == MAX_IMAGE_RETRIES - 1:
+            if exc.code not in RETRYABLE_HTTP_CODES or attempt == MAX_IMAGE_RETRIES - 1:
                 raise
             time.sleep(INITIAL_BACKOFF_SECONDS * (2 ** attempt) + random.uniform(0, 1))
 
 def error_item(path, exc, previous):
     item = {'file': path.name, 'review_status': 'needs_human_review', 'error': f'Автоматичният анализ не завърши: {exc}', 'analyzed_at': now()}
-    if 'HTTP Error 429' in str(exc) or 'RESOURCE_EXHAUSTED' in str(exc):
+    if isinstance(exc, urllib.error.HTTPError) and exc.code in RETRYABLE_HTTP_CODES:
         item['retry_runs'] = retry_runs(previous) + 1
     return item
 
