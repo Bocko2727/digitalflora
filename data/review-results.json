@@ -143,12 +143,6 @@
       "analyzed_at": "2026-08-12T06:55:25.960388+00:00"
     },
     {
-      "file": "File_005.png",
-      "review_status": "needs_human_review",
-      "error": "Автоматичният анализ не завърши: HTTP Error 429: Too Many Requests",
-      "analyzed_at": "2026-08-12T06:55:26.241079+00:00"
-    },
-    {
       "file": "File_018.png",
       "review_status": "needs_human_review",
       "error": "Автоматичният анализ не завърши: HTTP Error 429: Too Many Requests",
@@ -161,22 +155,10 @@
       "analyzed_at": "2026-08-12T06:55:26.946881+00:00"
     },
     {
-      "file": "File_0056666666665.png",
-      "review_status": "needs_human_review",
-      "error": "Автоматичният анализ не завърши: HTTP Error 429: Too Many Requests",
-      "analyzed_at": "2026-08-12T06:55:27.777873+00:00"
-    },
-    {
       "file": "File_01000000.png",
       "review_status": "needs_human_review",
       "error": "Автоматичният анализ не завърши: HTTP Error 429: Too Many Requests",
       "analyzed_at": "2026-08-12T06:55:28.066274+00:00"
-    },
-    {
-      "file": "File_007.png",
-      "review_status": "needs_human_review",
-      "error": "Автоматичният анализ не завърши: HTTP Error 429: Too Many Requests",
-      "analyzed_at": "2026-08-12T06:55:28.352201+00:00"
     },
     {
       "file": "File_012.png",
@@ -189,12 +171,6 @@
       "review_status": "needs_human_review",
       "error": "Автоматичният анализ не завърши: HTTP Error 429: Too Many Requests",
       "analyzed_at": "2026-08-12T06:55:29.392653+00:00"
-    },
-    {
-      "file": "File_006.png",
-      "review_status": "needs_human_review",
-      "error": "Автоматичният анализ не завърши: HTTP Error 429: Too Many Requests",
-      "analyzed_at": "2026-08-12T06:55:29.879728+00:00"
     },
     {
       "file": "File_020.png",
@@ -592,12 +568,6 @@
       "analyzed_at": "2026-08-13T12:33:52.449532+00:00"
     },
     {
-      "file": "File_003.png",
-      "review_status": "needs_human_review",
-      "error": "Автоматичният анализ не завърши: HTTP Error 503: Service Unavailable",
-      "analyzed_at": "2026-08-13T12:34:37.585929+00:00"
-    },
-    {
       "file": "File_004.png",
       "likely_common_name_bg": "Кукувиче грозде",
       "likely_scientific_name": "Muscari sp.",
@@ -617,6 +587,104 @@
       "safety_note": "Това е ботанически анализ, а не медицински или кулинарен съвет. Някои диви луковични растения са токсични при консумация.",
       "review_status": "needs_human_review",
       "analyzed_at": "2026-08-13T12:34:52.864501+00:00"
+    },
+    {
+      "file": "File_003.png",
+      "likely_common_name_bg": "Пролетен минзухар",
+      "likely_scientific_name": "Crocus sp.",
+      "family": "Iridaceae (Перуникови)",
+      "confidence": "medium",
+      "visible_features": "Три нискорастящи лилави цвята с шест околоцветни листчета и ярки оранжеви тичинки и близалце, растящи сред суха тревиста растителност.",
+      "possible_lookalikes": "Мразовец / Есенен минзухар (Colchicum - силно отровен, с 6 тичинки вместо 3 при Crocus), други лилави видове от род Crocus.",
+      "additional_photos_needed": "Снимки в близък план на тичинките и близалцето, основата на цвета, листата с техните белези, както и подземните органи (грудколуковица).",
+      "safety_note": "Внимание: Пролетните минзухари могат да се объркат с отровния мразовец (Colchicum), съдържащ колхицин. Не консумирайте и не използвайте диви растения за лечебни цели без потвърждение от експерт.",
+      "review_status": "needs_human_review",
+      "analyzed_at": "2026-08-13T12:39:51.767802+00:00"
+    },
+    {
+      "file": "File_005.png",
+      "likely_common_name_bg": "Бяла тлъстига (червеникава форма)",
+      "likely_scientific_name": "Sedum album",
+      "family": "Crassulaceae (Дебелецови)",
+      "confidence": "medium",
+      "visible_features": [
+        "Нисък, пълзящ сукулент, растящ на туфи",
+        "Малки, месести, надебелени листа с продълговата/яйцевидна форма",
+        "Тъмночервеникав до лилав цвят на листата, дължащ се на слънчев стрес или засушаване",
+        "Тънки вкореняващи се стъбла върху открита почва",
+        "Липсват видими цветове или съцветия"
+      ],
+      "possible_lookalikes": [
+        "Sedum atratum",
+        "Sedum rubrotinctum",
+        "Sedum stefco",
+        "Sedum hispanicum"
+      ],
+      "additional_photos_needed": [
+        "Снимка на цветовете и съцветието по време на цъфтеж",
+        "Близък план на подреждането на листата върху развито стъбло",
+        "Снимка на естественото местообитание и околната растителност"
+      ],
+      "safety_note": "Някои видове от род Тлъстига (Sedum) съдържат алкалоиди и могат да предизвикат стомашно-чревни смущения или кожно дразнене. Не използвайте за храна или лечение въз основа на визуално идентифициране.",
+      "review_status": "needs_human_review",
+      "analyzed_at": "2026-08-13T12:40:32.062283+00:00"
+    },
+    {
+      "file": "File_0056666666665.png",
+      "likely_common_name_bg": "Незабравка",
+      "likely_scientific_name": "Myosotis sp.",
+      "family": "Boraginaceae (Грапаволистни)",
+      "confidence": "medium",
+      "visible_features": "Малки светлосини цветове с петолъчно венче и жълто-оранжев пръстен в центъра. Прави, тънки стъбла с продълговати, ненарязани зелени листа. Вляво се вижда и друго съцветие с тъмносини цветове (вероятно от род Ajuga).",
+      "possible_lookalikes": "Myosotis sylvatica, Myosotis arvensis, Brunnera macrophylla, Omphalodes verna",
+      "additional_photos_needed": "Макроснимка на чашката на цвета (за проверка на вида власинки), снимка на приосновните листа и детайл на цялото растение.",
+      "safety_note": "Някои видове от семейство Boraginaceae съдържат пиролизидинови алкалоиди, които са токсични при консумация. Идентификацията по снимка е само с информативна цел и не гарантира безопасност.",
+      "review_status": "needs_human_review",
+      "analyzed_at": "2026-08-13T12:41:15.163812+00:00"
+    },
+    {
+      "file": "File_006.png",
+      "likely_common_name_bg": "Пълзящо срещниче",
+      "likely_scientific_name": "Ajuga reptans",
+      "family": "Lamiaceae (Устноцветни)",
+      "confidence": "medium",
+      "visible_features": "Вертикално класовидно съцветие с множество наситено синьо-виолетови двуустни цветове; тъмни (лилавеещи) прицветни листчета; зелени продълговати листа в основата и по стъблото.",
+      "possible_lookalikes": [
+        "Ajuga genevensis (Женевско срещниче)",
+        "Ajuga pyramidalis (Пирамидално срещниче)",
+        "Prunella vulgaris (Обикновена кафявка)"
+      ],
+      "additional_photos_needed": [
+        "Снимка в основата на растението (за проверка за наличие на пълзящи издънки/столони)",
+        "Детайлен близък план на единичен цвят и чашката",
+        "Снимка на цялото растение отстрани с ясна видимост на окосмяването по стъблото"
+      ],
+      "safety_note": "Информацията е предоставена само с цел ботаническа идентификация. Растението не бива да се консумира или използва за медицински цели без потвърждение от специалист.",
+      "review_status": "needs_human_review",
+      "analyzed_at": "2026-08-13T12:41:42.326491+00:00"
+    },
+    {
+      "file": "File_007.png",
+      "likely_common_name_bg": "Лечебна иглика",
+      "likely_scientific_name": "Primula veris",
+      "family": "Primulaceae",
+      "confidence": "high",
+      "visible_features": [
+        "Яркожълти, тръбовидни цветове, събрани в сенниковидно съцветие на върха на единично безлистно стъбло",
+        "Приосновни, силно набръчкани зелени листа с ясно изразена нерватура",
+        "Светлозелена, леко подута чашка в основата на венчето"
+      ],
+      "possible_lookalikes": [
+        "Primula elatior (Висока иглика)",
+        "Primula vulgaris (Обикновена иглика)"
+      ],
+      "additional_photos_needed": [
+        "Близък план на вътрешността на цвета (венчелистчетата и оцветяването в гърлото)",
+        "Макро снимка на долната повърхност и мъхото покритие на листата"
+      ],
+      "safety_note": "Някои видове от род Primula могат да предизвикат контактен дерматит при чувствителни хора. Не използвайте за билколечение или консумация без потвърждение от ботаник.",
+      "review_status": "needs_human_review",
+      "analyzed_at": "2026-08-13T12:42:16.757621+00:00"
     }
   ]
 }
