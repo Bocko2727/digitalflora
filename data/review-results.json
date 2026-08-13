@@ -137,12 +137,6 @@
       "analyzed_at": "2026-08-12T06:55:25.256572+00:00"
     },
     {
-      "file": "File_002.png",
-      "review_status": "needs_human_review",
-      "error": "Автоматичният анализ не завърши: HTTP Error 429: Too Many Requests",
-      "analyzed_at": "2026-08-12T06:55:25.697642+00:00"
-    },
-    {
       "file": "File_009.png",
       "review_status": "needs_human_review",
       "error": "Автоматичният анализ не завърши: HTTP Error 429: Too Many Requests",
@@ -167,12 +161,6 @@
       "analyzed_at": "2026-08-12T06:55:26.946881+00:00"
     },
     {
-      "file": "File_003.png",
-      "review_status": "needs_human_review",
-      "error": "Автоматичният анализ не завърши: HTTP Error 429: Too Many Requests",
-      "analyzed_at": "2026-08-12T06:55:27.486432+00:00"
-    },
-    {
       "file": "File_0056666666665.png",
       "review_status": "needs_human_review",
       "error": "Автоматичният анализ не завърши: HTTP Error 429: Too Many Requests",
@@ -191,12 +179,6 @@
       "analyzed_at": "2026-08-12T06:55:28.352201+00:00"
     },
     {
-      "file": "File_004.png",
-      "review_status": "needs_human_review",
-      "error": "Автоматичният анализ не завърши: HTTP Error 429: Too Many Requests",
-      "analyzed_at": "2026-08-12T06:55:28.837286+00:00"
-    },
-    {
       "file": "File_012.png",
       "review_status": "needs_human_review",
       "error": "Автоматичният анализ не завърши: HTTP Error 429: Too Many Requests",
@@ -207,12 +189,6 @@
       "review_status": "needs_human_review",
       "error": "Автоматичният анализ не завърши: HTTP Error 429: Too Many Requests",
       "analyzed_at": "2026-08-12T06:55:29.392653+00:00"
-    },
-    {
-      "file": "File_000.png",
-      "review_status": "needs_human_review",
-      "error": "Автоматичният анализ не завърши: HTTP Error 429: Too Many Requests",
-      "analyzed_at": "2026-08-12T06:55:29.658649+00:00"
     },
     {
       "file": "File_006.png",
@@ -231,12 +207,6 @@
       "review_status": "needs_human_review",
       "error": "Автоматичният анализ не завърши: HTTP Error 429: Too Many Requests",
       "analyzed_at": "2026-08-12T06:55:30.385831+00:00"
-    },
-    {
-      "file": "File_001.png",
-      "review_status": "needs_human_review",
-      "error": "Автоматичният анализ не завърши: HTTP Error 429: Too Many Requests",
-      "analyzed_at": "2026-08-12T06:55:30.640102+00:00"
     },
     {
       "file": "File_013.png",
@@ -554,6 +524,99 @@
       "safety_note": "Визуалното разпознаване на растения по снимка е само предварително. Никога не консумирайте и не използвайте диви растения за медицински цели без потвърждение от ботаник.",
       "review_status": "needs_human_review",
       "analyzed_at": "2026-08-12T07:27:59.342907+00:00"
+    },
+    {
+      "file": "File_000.png",
+      "likely_common_name_bg": "Френски клин",
+      "likely_scientific_name": "Astragalus monspessulanus",
+      "family": "Fabaceae (Бобови)",
+      "confidence": "medium",
+      "visible_features": [
+        "Нечифтоперести листа с множество малки, елиптични листчета",
+        "Мотилкови цветове с лилаво-розов до магента цвят",
+        "Гъсти, главести до сбити гроздовидни съцветия",
+        "Нискорастящ, стелещ се тревист хабитус"
+      ],
+      "possible_lookalikes": [
+        "Astragalus onobrychis (Еспарзетов клин)",
+        "Други видове от род Astragalus (Клин)",
+        "Видове от род Oxytropis (Остролодник)"
+      ],
+      "additional_photos_needed": [
+        "Близък план на чашката и отделните венчелистчета",
+        "Снимка на плодовете (бобовете), ако са налични",
+        "Детайл на прилистниците в основата на дръжките"
+      ],
+      "safety_note": "Някои видове от род Astragalus могат да бъдат токсични за хора и животни поради натрупване на селен или съдържание на алкалоиди. Не използвайте за храна или лечение без потвърждение от ботаник.",
+      "review_status": "needs_human_review",
+      "analyzed_at": "2026-08-13T12:33:05.415116+00:00"
+    },
+    {
+      "file": "File_001.png",
+      "likely_common_name_bg": "Ябълка",
+      "likely_scientific_name": "Malus domestica",
+      "family": "Rosaceae",
+      "confidence": "medium",
+      "visible_features": [
+        "Бяло-розови цветове с пет венчелистчета",
+        "Множество тичинки с жълти прашници",
+        "Цветове, събрани в щитовидни съцветия върху къси клонки",
+        "Млади зелени листа, появяващи се заедно с цветовете"
+      ],
+      "possible_lookalikes": [
+        "Дива ябълка (Malus sylvestris)",
+        "Круша (Pyrus communis)",
+        "Дюля (Cydonia oblonga)"
+      ],
+      "additional_photos_needed": [
+        "Близък план на напълно развити листа и листни дръжки",
+        "Детайлна снимка на ствола и кората",
+        "Снимка на цялата корона на дървото",
+        "Снимка на плодове (когато са налични)"
+      ],
+      "safety_note": "Идентификацията по изображение е предварителна. Някои видове от това семейство съдържат съединения (като цианогенни гликозиди в семената), които могат да бъдат токсични. Не консумирайте части от растението без сигурно потвърждение.",
+      "review_status": "needs_human_review",
+      "analyzed_at": "2026-08-13T12:33:20.691879+00:00"
+    },
+    {
+      "file": "File_002.png",
+      "likely_common_name_bg": "Двулистен синчец",
+      "likely_scientific_name": "Scilla bifolia",
+      "family": "Asparagaceae (Зайчесянкови)",
+      "confidence": "medium",
+      "visible_features": "Ниско пролетно растение с няколко синьо-виолетови звездовидни цвята, сини тичинки и тесни, линейни зелени листа, поникващи сред суха листна постелка.",
+      "possible_lookalikes": "Scilla siberica (Сибирски синчец), Chionodoxa species (Снежна звезда), Hyacinthella",
+      "additional_photos_needed": "Близък план на цветовете с фокус върху тичинките, брой и разположение на листата в основата, както и снимка на цялото растение от друг ъгъл.",
+      "safety_note": "Растението съдържа токсични съединения (сърдечни гликозиди) и не бива да се консумира.",
+      "review_status": "needs_human_review",
+      "analyzed_at": "2026-08-13T12:33:52.449532+00:00"
+    },
+    {
+      "file": "File_003.png",
+      "review_status": "needs_human_review",
+      "error": "Автоматичният анализ не завърши: HTTP Error 503: Service Unavailable",
+      "analyzed_at": "2026-08-13T12:34:37.585929+00:00"
+    },
+    {
+      "file": "File_004.png",
+      "likely_common_name_bg": "Кукувиче грозде",
+      "likely_scientific_name": "Muscari sp.",
+      "family": "Asparagaceae",
+      "confidence": "medium",
+      "visible_features": "Гроздовидно съцветие от малки, кълбовидни сини цветчета с по-светли ръбове; гладки, месисти зелени листа, излизащи от основата; нискорастящо пролетно растение сред скали и трева.",
+      "possible_lookalikes": [
+        "Bellevalia",
+        "Hyacinthella",
+        "Scilla"
+      ],
+      "additional_photos_needed": [
+        "Близък план на отделните цветчета",
+        "Пълен изглед на формата и ширината на листата",
+        "Основа на стъблото и луковицата"
+      ],
+      "safety_note": "Това е ботанически анализ, а не медицински или кулинарен съвет. Някои диви луковични растения са токсични при консумация.",
+      "review_status": "needs_human_review",
+      "analyzed_at": "2026-08-13T12:34:52.864501+00:00"
     }
   ]
 }
