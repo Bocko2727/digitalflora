@@ -16,18 +16,28 @@ RESULTS = ROOT / 'data' / 'review-results.json'
 API_KEY = os.environ.get('GEMINI_API_KEY')
 MODEL = 'gemini-3.6-flash'
 BATCH_SIZE = int(os.environ.get('GEMINI_REVIEW_BATCH_SIZE', '5'))
-MAX_RETRIES = 5
+MAX_IMAGE_RETRIES = 5
+MAX_BATCH_RUNS = int(os.environ.get('GEMINI_MAX_BATCH_RUNS', '2'))
 INITIAL_BACKOFF_SECONDS = 5
 PROMPT = '''You are a cautious botanical image triage assistant. Analyze ONE image only. Do not infer unseen features. Return valid JSON only with these keys: file, likely_common_name_bg, likely_scientific_name, family, confidence (low|medium|high), visible_features, possible_lookalikes, additional_photos_needed, safety_note, review_status. Use Bulgarian for all descriptive strings. review_status must be needs_human_review. If the organism cannot be determined from the image, state that clearly and keep confidence low. Do not provide medical advice or claim an identification is certain.'''
+
+def now():
+    return datetime.now(timezone.utc).isoformat()
 
 def load_results():
     if RESULTS.exists():
         return json.loads(RESULTS.read_text(encoding='utf-8'))
     return {'schema_version': 1, 'items': []}
 
+def retry_runs(item):
+    try:
+        return int(item.get('retry_runs', 0))
+    except (TypeError, ValueError):
+        return 0
+
 def is_retryable(item):
     error = str(item.get('error', ''))
-    return 'HTTP Error 429' in error or 'RESOURCE_EXHAUSTED' in error
+    return ('HTTP Error 429' in error or 'RESOURCE_EXHAUSTED' in error) and retry_runs(item) < MAX_BATCH_RUNS
 
 def analyze(path):
     mime = mimetypes.guess_type(path.name)[0] or 'image/jpeg'
@@ -47,27 +57,29 @@ def analyze(path):
     text = raw['candidates'][0]['content']['parts'][0]['text']
     item = json.loads(re.sub(r'^```json\s*|\s*```$', '', text.strip()))
     item['file'] = path.name
-    item['analyzed_at'] = datetime.now(timezone.utc).isoformat()
+    item['analyzed_at'] = now()
     item['review_status'] = 'needs_human_review'
     return item
 
 def analyze_with_retry(path):
-    for attempt in range(MAX_RETRIES):
+    for attempt in range(MAX_IMAGE_RETRIES):
         try:
             return analyze(path)
         except urllib.error.HTTPError as exc:
-            if exc.code != 429 or attempt == MAX_RETRIES - 1:
+            if exc.code != 429 or attempt == MAX_IMAGE_RETRIES - 1:
                 raise
-            delay = INITIAL_BACKOFF_SECONDS * (2 ** attempt) + random.uniform(0, 1)
-            time.sleep(delay)
+            time.sleep(INITIAL_BACKOFF_SECONDS * (2 ** attempt) + random.uniform(0, 1))
 
-def error_item(path, exc):
-    return {
+def error_item(path, exc, previous):
+    item = {
         'file': path.name,
         'review_status': 'needs_human_review',
         'error': f'Автоматичният анализ не завърши: {exc}',
-        'analyzed_at': datetime.now(timezone.utc).isoformat(),
+        'analyzed_at': now(),
     }
+    if 'HTTP Error 429' in str(exc) or 'RESOURCE_EXHAUSTED' in str(exc):
+        item['retry_runs'] = retry_runs(previous) + 1
+    return item
 
 def main():
     if not API_KEY:
@@ -83,18 +95,14 @@ def main():
     selected = {path.name for path in candidates}
     data['items'] = [item for item in items if item.get('file') not in selected]
     for index, path in enumerate(candidates):
+        previous = existing.get(path.name, {})
         if path.stat().st_size > 18 * 1024 * 1024:
-            data['items'].append({
-                'file': path.name,
-                'review_status': 'needs_human_review',
-                'error': 'Файлът е по-голям от 18 MB; качи по-малко копие.',
-                'analyzed_at': datetime.now(timezone.utc).isoformat(),
-            })
+            data['items'].append({'file': path.name, 'review_status': 'needs_human_review', 'error': 'Файлът е по-голям от 18 MB; качи по-малко копие.', 'analyzed_at': now()})
             continue
         try:
             data['items'].append(analyze_with_retry(path))
         except (urllib.error.URLError, urllib.error.HTTPError, KeyError, IndexError, json.JSONDecodeError) as exc:
-            data['items'].append(error_item(path, exc))
+            data['items'].append(error_item(path, exc, previous))
         if index < len(candidates) - 1:
             time.sleep(5)
     RESULTS.parent.mkdir(parents=True, exist_ok=True)
