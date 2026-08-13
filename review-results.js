@@ -4,39 +4,35 @@ fetch('data/review-results.json')
     return r.json();
   })
   .then(d => {
-    const a = d.results || d;
-
-    if (!Array.isArray(a) || a.length === 0) {
+    const records = d.results || d;
+    if (!Array.isArray(records) || records.length === 0) {
       throw new Error('Няма записи в review-results.json');
     }
 
-    document.body.insertAdjacentHTML('beforeend', `
-      <section id="review-results">
-        <h1>Предварителни автоматични разпознавания</h1>
-        <p>Предварително автоматично разпознаване — изисква човешка ботаническа проверка.</p>
-        ${a.map(x => `
-          <article>
-            <img src="images/review/${x.file_name || x.filename || x.file}" alt="${x.bulgarian_name || x.name || 'Растение'}">
-            <h2>${x.bulgarian_name || x.name || 'Неопределено растение'}</h2>
-            <i>${x.latin_name || '—'}</i>
-            <p><b>Семейство:</b> ${x.family || '—'}</p>
-            <p><b>Увереност:</b> ${x.confidence || '—'}</p>
-            <p><b>Видими белези:</b> ${x.visible_traits || '—'}</p>
-            <p><b>Възможни двойници:</b> ${x.possible_lookalikes || '—'}</p>
-            <p><b>Нужни снимки:</b> ${x.additional_photos_needed || '—'}</p>
-            <p><b>Безопасност:</b> ${x.safety_note || '—'}</p>
-          </article>
-        `).join('')}
-      </section>
-    `);
+    const fallback = 'Няма достатъчно научно потвърдени данни; записът е предварително автоматично разпознаване и изисква човешка ботаническа проверка.';
+
+    records.forEach(x => {
+      const image = x.file_name || x.filename || x.file;
+      P.push([
+        x.bulgarian_name || x.name || 'Неопределено растение',
+        x.latin_name || 'Неопределен таксон',
+        x.family || 'Семейство неустановено',
+        image ? [`images/review/${image}`] : [],
+        'Неопределимо — автоматично предварително разпознаване',
+        x.visible_traits || fallback,
+        'Местообитанието и разпространението не са проверени за този предварителен запис.',
+        x.possible_lookalikes || 'Не са посочени; не използвай записа за сигурно определяне.',
+        'Потенциалната екологична роля не е проверена за този предварителен запис.',
+        x.safety_note || 'Не консумирай и не използвай за самолечение или за храна на животни до сигурно определяне.',
+        'Само за фотографско наблюдение до човешка ботаническа проверка.',
+        x.additional_photos_needed || 'За сигурно определяне са нужни допълнителни диагностични снимки.'
+      ]);
+    });
+
+    menu();
+    draw();
   })
   .catch(error => {
-    console.error('Грешка при зареждане на review резултатите:', error);
-
-    document.body.insertAdjacentHTML('beforeend', `
-      <section id="review-results">
-        <h1>Предварителни автоматични разпознавания</h1>
-        <p>Резултатите не могат да се заредят: ${error.message}</p>
-      </section>
-    `);
+    console.error('Грешка при интегриране на предварителните записи:', error);
+    document.body.insertAdjacentHTML('beforeend', `<p class="note"><b>Предварителните записи не са заредени:</b> ${error.message}</p>`);
   });
