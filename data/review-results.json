@@ -131,36 +131,6 @@
       "analyzed_at": "2026-08-11T20:03:27.438035+00:00"
     },
     {
-      "file": "File_018.png",
-      "review_status": "needs_human_review",
-      "error": "Автоматичният анализ не завърши: HTTP Error 429: Too Many Requests",
-      "analyzed_at": "2026-08-12T06:55:26.708258+00:00"
-    },
-    {
-      "file": "File_014.png",
-      "review_status": "needs_human_review",
-      "error": "Автоматичният анализ не завърши: HTTP Error 429: Too Many Requests",
-      "analyzed_at": "2026-08-12T06:55:26.946881+00:00"
-    },
-    {
-      "file": "File_020.png",
-      "review_status": "needs_human_review",
-      "error": "Автоматичният анализ не завърши: HTTP Error 429: Too Many Requests",
-      "analyzed_at": "2026-08-12T06:55:30.096485+00:00"
-    },
-    {
-      "file": "File_016.png",
-      "review_status": "needs_human_review",
-      "error": "Автоматичният анализ не завърши: HTTP Error 429: Too Many Requests",
-      "analyzed_at": "2026-08-12T06:55:30.385831+00:00"
-    },
-    {
-      "file": "File_013.png",
-      "review_status": "needs_human_review",
-      "error": "Автоматичният анализ не завърши: HTTP Error 429: Too Many Requests",
-      "analyzed_at": "2026-08-12T06:55:30.866528+00:00"
-    },
-    {
       "file": "File_021.png",
       "likely_common_name_bg": "Бодлив чал (Миши бод)",
       "likely_scientific_name": "Ruscus aculeatus",
@@ -274,12 +244,6 @@
       "safety_note": "Внимание: Олеандърът е изключително токсично растение. Всички негови части съдържат сърдечни гликозиди и са опасни за хора и животни при поглъщане или контакт с растителния сок.",
       "review_status": "needs_human_review",
       "analyzed_at": "2026-08-12T07:25:06.278597+00:00"
-    },
-    {
-      "file": "File_024.png",
-      "review_status": "needs_human_review",
-      "error": "Автоматичният анализ не завърши: HTTP Error 429: Too Many Requests",
-      "analyzed_at": "2026-08-12T07:25:06.546395+00:00"
     },
     {
       "file": "File_025.png",
@@ -759,6 +723,120 @@
       "safety_note": "Не използвайте за консумация или лечение. Идентификацията по снимка не е гарантирана и някои растения могат да предизвикат алергични реакции или токсичност.",
       "review_status": "needs_human_review",
       "analyzed_at": "2026-08-13T12:48:18.407766+00:00"
+    },
+    {
+      "file": "File_013.png",
+      "likely_common_name_bg": "Клопотар",
+      "likely_scientific_name": "Rhinanthus sp.",
+      "family": "Orobanchaceae",
+      "confidence": "medium",
+      "visible_features": [
+        "Жълти двуустни цветове",
+        "Подута, светлоезелена чашка",
+        "Остро назъбени прицветници",
+        "Противоположно разположени назъбени ланцетни листа"
+      ],
+      "possible_lookalikes": [
+        "Melampyrum sp. (Коприварка)",
+        "Pedicularis sp."
+      ],
+      "additional_photos_needed": [
+        "Снимка на цялото растение в естествената му среда",
+        "Близък план на зъбците на прицветниците и горната устна на цвета",
+        "Снимка на основата на стъблото"
+      ],
+      "safety_note": "Това растение е полупаразитно и съдържа гликозиди (напр. аукубин), които могат да бъдат леко токсични. Не консумирайте и не използвайте за самолечение.",
+      "review_status": "needs_human_review",
+      "analyzed_at": "2026-08-13T12:56:15.707499+00:00"
+    },
+    {
+      "file": "File_014.png",
+      "likely_common_name_bg": "Секирче (вероятно)",
+      "likely_scientific_name": "Lathyrus sp.",
+      "family": "Fabaceae (Бобови)",
+      "confidence": "low",
+      "visible_features": "Единичен дребен, яркорозов цвят с устройство, типично за бобовите растения (пеперудовидно), разположен върху много тънка дръжка.",
+      "possible_lookalikes": "Различни видове от родовете Секирче (Lathyrus) и Фий (Vicia).",
+      "additional_photos_needed": "Снимки на цялото растение в естествената му среда, включително листата, стъблото, прилистниците и чашката на цвета.",
+      "safety_note": "Идентификацията по единичен откъснат цвят е несигурна. Не използвайте растението за храна или лечение.",
+      "review_status": "needs_human_review",
+      "analyzed_at": "2026-08-13T12:56:28.454690+00:00"
+    },
+    {
+      "file": "File_016.png",
+      "likely_common_name_bg": "Лопен",
+      "likely_scientific_name": "Verbascum sp.",
+      "family": "Scrophulariaceae (Живеничеви)",
+      "confidence": "medium",
+      "visible_features": "Високо, разклонено тревисто растение с множество жълти цветове с пет венчелистчета, събрани в изправени съцветия. В основата се виждат едри, набръчкани зелени листа.",
+      "possible_lookalikes": "Различни видове от род Verbascum (напр. Verbascum sinuatum, Verbascum densiflorum, Verbascum thapsus), както и Agrimonia eupatoria.",
+      "additional_photos_needed": "Близък план на отделните цветове (тичинки и прашници), детайли на стъблото и власинките по него, както и чиста снимка на приосновните листа.",
+      "safety_note": "Информацията е представена само с информативна цел и не представлява медицински съвет или окончателно ботаническо потвърждение. Семената и други части на някои видове лопен могат да съдържат токсични вещества (сапонини).",
+      "review_status": "needs_human_review",
+      "analyzed_at": "2026-08-13T12:56:48.147046+00:00"
+    },
+    {
+      "file": "File_018.png",
+      "likely_common_name_bg": "Обикновена шипка",
+      "likely_scientific_name": "Rosa canina",
+      "family": "Rosaceae",
+      "confidence": "medium",
+      "visible_features": "Единичен цвят с 5 светлобели до бледорозови венчелистчета и множество жълти тичинки; нечифтоперести листа с овални назъбени листчета; храстовиден хабитус.",
+      "possible_lookalikes": "Rosa arvensis (Полева шипка), Rosa dumalis, както и други диви видове от род Rosa.",
+      "additional_photos_needed": "Снимки на шиповете/тръните по стъблото, чашелистчетата под цвета и зрелите плодове (шипки).",
+      "safety_note": "Стъблата на диви рози обикновено имат остри тръни, които могат да причинят нараняване. Този анализ е само с информативна цел и не гарантира пълна точност.",
+      "review_status": "needs_human_review",
+      "analyzed_at": "2026-08-13T12:57:05.845995+00:00"
+    },
+    {
+      "file": "File_020.png",
+      "likely_common_name_bg": "Червен мак",
+      "likely_scientific_name": "Papaver rhoeas",
+      "family": "Papaveraceae",
+      "confidence": "medium",
+      "visible_features": [
+        "Яркочервени до оранжеви венчелистчета с фино набръчкана текстура",
+        "Тъмен център с множество тичинки",
+        "Тънко зелено стъбло"
+      ],
+      "possible_lookalikes": [
+        "Papaver dubium (Съмнителен мак)",
+        "Papaver argemone (Пясъчен мак)",
+        "Glaucium corniculatum (Рогат мак)"
+      ],
+      "additional_photos_needed": [
+        "Снимка на семенната кутийка за точна идентификация на вида",
+        "Снимка на листата (в основата и по стъблото)",
+        "Близък план на власинките по стъблото"
+      ],
+      "safety_note": "Растенията от семейство Макови съдържат алкалоиди и могат да бъдат токсични при поглъщане. Не консумирайте и измийте ръцете си след контакт.",
+      "review_status": "needs_human_review",
+      "analyzed_at": "2026-08-13T12:57:21.003923+00:00"
+    },
+    {
+      "file": "File_024.png",
+      "likely_common_name_bg": "Обикновено плюскавиче",
+      "likely_scientific_name": "Silene vulgaris",
+      "family": "Caryophyllaceae (Карамфилови)",
+      "confidence": "high",
+      "visible_features": [
+        "Бели венчелистчета, дълбоко раздвоени на върха",
+        "Характерна набъбнала (мехурчеста) чашка с мрежесто жилкуване",
+        "Множество цветове и пъпки, разположени на тънки разклонени дръжки",
+        "Тревисто растение, растящо сред висока трева"
+      ],
+      "possible_lookalikes": [
+        "Silene uniflora",
+        "Silene latifolia"
+      ],
+      "additional_photos_needed": [
+        "Близък план на листата и тяхното разположение върху стъблото",
+        "Снимка на основата на растението (приосновните листа)",
+        "Близък план на плодните капсули, ако има налични"
+      ],
+      "safety_note": "Идентификацията е само с информативна цел и не представлява ботаническа или медицинска гаранция. Не консумирайте диворастящи растения.",
+      "review_status": "needs_human_review",
+      "analyzed_at": "2026-08-13T12:58:22.923943+00:00"
     }
   ]
 }
