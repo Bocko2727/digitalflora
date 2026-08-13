@@ -71,12 +71,7 @@ def analyze_with_retry(path):
             time.sleep(INITIAL_BACKOFF_SECONDS * (2 ** attempt) + random.uniform(0, 1))
 
 def error_item(path, exc, previous):
-    item = {
-        'file': path.name,
-        'review_status': 'needs_human_review',
-        'error': f'Автоматичният анализ не завърши: {exc}',
-        'analyzed_at': now(),
-    }
+    item = {'file': path.name, 'review_status': 'needs_human_review', 'error': f'Автоматичният анализ не завърши: {exc}', 'analyzed_at': now()}
     if 'HTTP Error 429' in str(exc) or 'RESOURCE_EXHAUSTED' in str(exc):
         item['retry_runs'] = retry_runs(previous) + 1
     return item
@@ -87,11 +82,7 @@ def main():
     data = load_results()
     items = data.get('items', [])
     existing = {item.get('file'): item for item in items}
-    candidates = [
-        path for path in sorted(INBOX.glob('*'))
-        if path.suffix.lower() in {'.jpg', '.jpeg', '.png', '.webp'}
-        and (path.name not in existing or is_retryable(existing[path.name]))
-    ][:BATCH_SIZE]
+    candidates = [path for path in sorted(INBOX.glob('*')) if path.suffix.lower() in {'.jpg', '.jpeg', '.png', '.webp'} and (path.name not in existing or is_retryable(existing[path.name]))][:BATCH_SIZE]
     selected = {path.name for path in candidates}
     data['items'] = [item for item in items if item.get('file') not in selected]
     for index, path in enumerate(candidates):
@@ -106,8 +97,7 @@ def main():
         if index < len(candidates) - 1:
             time.sleep(5)
     RESULTS.parent.mkdir(parents=True, exist_ok=True)
-    RESULTS.write_text(json.dumps(data, ensure_ascii=False, indent=2) + '
-', encoding='utf-8')
+    RESULTS.write_text(json.dumps(data, ensure_ascii=False, indent=2) + chr(10), encoding='utf-8')
 
 if __name__ == '__main__':
     main()
