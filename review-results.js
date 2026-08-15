@@ -29,7 +29,7 @@ function addReviewRecord(record) {
     bg,
     latin,
     record.family || 'Семейство неустановено',
-    [`images/review/${image}`],
+    [image],
     `Предварително определяне • увереност: ${typeof record.confidence === 'number' ? Math.round(record.confidence * 100) + '%' : 'непосочена'}`,
     features,
     'Местообитанието и разпространението не са проверени за този предварителен запис.',
