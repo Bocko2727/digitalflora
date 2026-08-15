@@ -26,19 +26,20 @@ function addReviewRecord(record) {
   const features = reviewText(record.visible_traits || record.visible_features || record.notes) || reviewFallback;
 
   P.push([
-    bg,
-    latin,
-    record.family || 'Семейство неустановено',
-    [image],
-    `Предварително определяне • увереност: ${typeof record.confidence === 'number' ? Math.round(record.confidence * 100) + '%' : 'непосочена'}`,
-    features,
-    'Местообитанието и разпространението не са проверени за този предварителен запис.',
-    reviewText(record.possible_lookalikes) || 'Не са посочени; не използвай записа за сигурно определяне.',
-    'Потенциалната екологична роля не е проверена за този предварителен запис.',
-    reviewText(record.safety_note) || 'Не консумирай и не използвай за самолечение или за храна на животни до сигурно определяне.',
-    'Само за фотографско наблюдение до човешка ботаническа проверка.',
-    reviewText(record.additional_photos_needed) || 'За сигурно определяне са нужни допълнителни диагностични снимки.'
-  ]);
+  bg,
+  latin,
+  record.family || 'Семейство неустановено',
+  [`images/review/${image}`],
+  `Предварително определяне • увереност: ${typeof record.confidence === 'number' ? Math.round(record.confidence * 100) + '%' : 'непосочена'}`,
+  features,
+  'Местообитанието и разпространението не са проверени за този предварителен запис.',
+  reviewText(record.possible_lookalikes) || 'Не са посочени; не използвай записа за сигурно определяне.',
+  'Потенциалната екологична роля не е проверена за този предварителен запис.',
+  reviewText(record.safety_note) || 'Не консумирай и не използвай за самолечение или за храна на животни до сигурно определяне.',
+  'Само за фотографско наблюдение до човешка ботаническа проверка.',
+  reviewText(record.additional_photos_needed) || 'За сигурно определяне са нужни допълнителни диагностични снимки.'
+]);
+
 }
 
 Promise.allSettled(
