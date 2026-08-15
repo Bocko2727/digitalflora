@@ -1,16 +1,23 @@
-fetch('data/review-results.json')
-  .then(r => {
-    if (!r.ok) throw new Error(`Не може да се зареди JSON: ${r.status}`);
-    return r.json();
-  })
-  .then(d => {
-    const records = Array.isArray(d) ? d : (d.items || d.results || []);
+Promise.all([
+  fetch('data/review-results.json'),
+  fetch('data/review-batch-c189987.json')
+])
+  .then(async responses => {
+    const [baseResponse, batchResponse] = responses;
+    if (!baseResponse.ok) throw new Error(`Не може да се зареди review-results.json: ${baseResponse.status}`);
+    if (!batchResponse.ok) throw new Error(`Не може да се зареди review-batch-c189987.json: ${batchResponse.status}`);
+
+    const [baseData, batchData] = await Promise.all([baseResponse.json(), batchResponse.json()]);
+    const baseRecords = Array.isArray(baseData) ? baseData : (baseData.items || baseData.results || []);
+    const batchRecords = Array.isArray(batchData) ? batchData : (batchData.items || batchData.results || []);
+    const records = [...baseRecords, ...batchRecords];
+
     if (!Array.isArray(records) || records.length === 0) {
-      throw new Error('Няма записи в review-results.json');
+      throw new Error('Няма записи в наличните JSON файлове');
     }
 
     const text = value => Array.isArray(value) ? value.join('; ') : (value || '—');
-    const fallback = 'Няма достатъчно научно потвърдени данни; записът е предварително автоматично разпознаване и изисква човешка ботаническа проверка.';
+    const fallback = 'Няма достатъчно научно потвърдени данни; записът е предварително разпознаване и изисква човешка ботаническа проверка.';
 
     records.forEach(x => {
       const image = x.file_name || x.filename || x.file;
@@ -19,7 +26,7 @@ fetch('data/review-results.json')
         x.latin_name || x.likely_scientific_name || 'Неопределен таксон',
         x.family || 'Семейство неустановено',
         image ? [`images/review/${image}`] : [],
-        'Неопределимо — автоматично предварително разпознаване',
+        x.review_status === 'approved_with_photo_identification' ? 'Потвърдено с висока вероятност' : 'Вероятно — предварително разпознаване',
         text(x.visible_traits || x.visible_features) || fallback,
         'Местообитанието и разпространението не са проверени за този предварителен запис.',
         text(x.possible_lookalikes) || 'Не са посочени; не използвай записа за сигурно определяне.',
